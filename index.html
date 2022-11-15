@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.center {
+        width: 1000px;
+        height: 80%;
+        border: 1px solid #73AD21;
+        position: absolute; /*Can also be `fixed`*/
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        /*Solves a problem in which the content is being cut when the div is smaller than its' wrapper:*/
+        max-width: 100%;
+        max-height: 100%;
+        overflow: auto;
+
+}
+    * {
+      font-family: "Segoe UI";
+	  font-weight: 500;
+	  <!-- color:grey; -->
+    }
+.datecanvas {
+  border-radius: 10px;
+  background: #cde0e9;
+  padding: 6px; 
+  width: 160px;
+  text-align:center;
+  border: none;
+  position:absolute;
+  top:70px;
+  right:10px;
+   <!-- style="position:absolute; text-align: center; padding-left: 91%;top:35px" -->
+}
+
+.invoicecanvas {
+  border-radius: 10px;
+  background: #cde0e9;
+  padding: 5px; 
+  width: 70px;
+  text-align:center;
+  position:absolute;
+  top:30px;
+  border: none;
+  right:100px;
+   <!-- style="position:absolute; text-align: center; padding-left: 91%;top:35px" -->
+}
+
+select {
+  border-radius: 13px;
+  background: #cce8ff;
+  padding: 7px; 
+  width: 7%;
+  text-align:center;
+  position:absolute;
+  border:none;
+  top: 43%;left:60.5%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+
+#maindatacanvas {
+  border-radius: 15px;
+  background: #cce8ff;
+  padding: 5px; 
+  width: 35%;
+  text-align:center;
+  font-size:20px;
+  position:absolute;
+  border:none;
+   <!-- style="position:absolute; text-align: center; padding-left: 91%;top:35px" -->
+}
+
+#submitcanvas {
+  border-radius: 15px;
+  background: #cce8ff;
+  padding: 5px; 
+  width: 35%;
+  text-align:center;
+  font-size:20px;
+  position:absolute;
+  border:none;
+   <!-- style="position:absolute; text-align: center; padding-left: 91%;top:35px" -->
+}
+
+#submitcanvas:hover {
+	background:transparent;
+	opacity:0.7;
+  <!-- -webkit-filter: brightness(80%); -->
+  
+}
+
+
+
+
+.button {
+position:absolute;
+background:transparent;
+top:28px;
+border: none;
+right:57px;
+}
+
+.img {
+	background:transparent;
+  -webkit-filter: brightness(100%);
+}
+img:hover {
+	background:transparent;
+  -webkit-filter: brightness(80%);
+}
+
+
+input::placeholder {
+    opacity: .7;
+    color: 0072b2;
+	font-size:15px;	
+}
+
+
+
+
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: absolute;
+  display: inline-block;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #cce8ff;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  right: 0;
+  width: 210px;
+  padding-top: 2px;
+  left: 2px;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #cce8ff; 
+  border-bottom: 1px solid #d4d4d4; 
+  border-radius: 15px;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #0072b2;
+  color: white;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #0072b2!important; 
+  color: #ffffff; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<div class="center">
+
+ <!-- style="position:absolute;background: #cde0e9;padding: 5px;width: 50px;right:40px;top:10px;"  -->
+<img src="..\img\SMT1.jpg" alt="SMT" width="150px" height="auto" style="
+    padding-top: 10px;
+    padding-left: 10px;
+	position:absolute;">
+
+
+<form action="/action_page.php" autocomplete="off">
+  <label for="cname"><p style=" position:absolute; text-align: center; left: 7%; top:23%">Customer Name</p></label>
+  <input id="maindatacanvas" style="top: 25%;left:20%;" type="text" id="cname" name="cname"placeholder="Enter."><br><br>
+  
+  <label for="lname"<p style=" position:absolute; text-align: center; left: 13%; top:35%">Address</p></label>
+  <input id="maindatacanvas" style="top: 34%;left:20%;" type="text" id="lname" name="lname" placeholder="Enter."><br><br>
+  
+  <label for="fcode"<p style=" position:absolute; text-align: center; left: 14%; top:44%">F.Code</p></label>
+  <div class="autocomplete" style="width:216px;left: 20%;top: 42.5%;text-align:center">
+    <input style="border-radius:15px;text-align:center" id="myInput" type="text" name="myCountry" placeholder="Enter.">
+  </div>
+
+  <label for="qnty"<p style=" position:absolute; text-align: center; left: 42%; top:44%">Quantity</p></label>
+  <input id="maindatacanvas" style="top: 43%;left:49%; width:10%" type="text" id="qnty" name="qnty"placeholder="Enter."><br><br>
+  
+  <label for="qntp"></label>
+
+	<select name="qntp" id="qntp">
+		<option value="Piece">pc</option>
+		<option value="m">m</option>
+		<option value="kg">kg</option>
+	</select>
+	
+	
+	
+	<label for="prvcus"<p style=" position:absolute; text-align: center; left: 62%; top:25%">Former Cus.</p></label>
+
+	<select name="prvcus" id="prvcus" style=" position:absolute; text-align: center; left: 71.5%; top:24.5%">
+		<option value="No">No</option>
+		<option value="Yes">Yes</option>
+	</select>
+	
+	<label for="slrp"<p style=" position:absolute; text-align: center; left: 62%; top:33%">Salesperson</p></label>
+
+	<select name="slrp" id="slrp" style=" position:absolute; text-align: center; left: 71.5%; top:32.5%; width:85px">
+		<option value="Raju">Raju</option>
+		<option value="Akhila">Akhila</option>
+		<option value="Omkar">Omkar</option>
+		<option value="Aruna">Aruna</option>
+	</select>
+	
+	<label for="pmd"<p style=" position:absolute; text-align: center; left: 62%; top:53%">P.Mode</p></label>
+
+	<select name="pmd" id="pmd" style=" position:absolute; text-align: center; left: 68.5%; top:52%; width:125px">
+		<option value="Raju">Credit Card</option>
+		<option value="Akhila">Debit Card</option>
+		<option value="Omkar">UPI</option>
+		<option value="Aruna">Cash</option>
+		<option value="Aruna">Bank Transfer</option>
+	</select>
+  
+  <label for="fname"><p style=" position:absolute; text-align: center; left: 10%; top:50%">Fabric Name</p></label>
+  <input id="maindatacanvas" style="top: 52%;left:20%;" type="text" id="fname" name="fname"><br><br>
+   
+  <label for="autodate"><p style=" position:absolute; text-align: center; right: 19%; top:55px">Date.</p></label>
+  <input class="datecanvas" id='date' name='autodate'>
+     
+  <label for="invsq"><p style=" position:absolute; text-align: center; right: 19%; top:15px">Invoice No.</p></label>
+  <input class="invoicecanvas" id='invoiceseq' name='invsq'>
+  <button type="button" class="button" onclick="myFunction();" ><img src="..\img\newinvoice.png" width="30px" /></button>
+
+ 
+  
+  
+  
+  <input id="submitcanvas" style="top: 62%;left:50%; background:#0072b2;color:white;width:10%" type="submit" value="+ Log">
+</form>
+
+<script>
+<!-- Today's Date Function -->
+currentdate = new Date().toLocaleDateString('en-us', {year:"numeric", month:"long", day:"numeric"}) 
+document.getElementById("date").value=currentdate;
+</script>
+
+<script>
+<!-- Invoice Squencer Function-->
+var seq=0;
+function myFunction() {
+seq=seq+1;
+    document.getElementById("invoiceseq").value = seq;
+}
+</script>
+
+<script>
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+/*An array containing all the country names in the world:*/
+var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("myInput"), countries);
+</script>
+
+
+
+</div>
+</body>
+</html>
