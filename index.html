@@ -190,6 +190,23 @@ input {
 <img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 938px;z-index: 1;top: 250px;">
 
 <form action="/action_page.php" autocomplete="off">
+
+
+ 
+  <label for="autodate"><p style=" position:absolute; text-align: center; left: 768px; top:55px">Date.</p></label>
+<input tabindex="-1" class="datecanvas" id="date" name="autodate" style="
+    left: 817px;
+    top: 66px;;"readonly="readonly">     
+  
+  <label for="invsq"><p style="position:absolute;text-align: center;left: 713px;top:15px;width: 100px;">Invoice No.</p></label>
+<input tabindex="-1" class="invoicecanvas" id="invoiceseq" name="invsq" style=" left: 817px; top: 27px;" readonly="readonly";>  
+<button type="button" class="button" onclick="myFunction();" style=" left: 887px; top: 25px;"><img src=".\img\newinvoice.png" width="30px"></button>
+
+ 
+
+
+
+
   <label for="cname"><p style=" position:absolute; text-align: center; left: 70px; top:129px;">Customer Name</p></label>
   <input id="maindatacanvas" style="top: 140px;left:200px;width: 325px;height:35px;padding:0px" type="text" name="cname" placeholder="Enter."><br><br>
   
@@ -198,7 +215,7 @@ input {
   
   <label for="fcode" <p="" style=" position:absolute; text-align: center; left: 140px; top:255px">F.Code<p></p></label>
   <div class="autocomplete" style="width:216px;left: 200px;top: 251px;text-align:center">
-    <input style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" id="myInput" type="text" name="myCountry" placeholder="Enter.">
+    <input style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" id="myInput" type="text" name="myCountry" placeholder="101....">
   </div>
 
   <label for="qnty" <p="" style=" position:absolute; text-align: center; left: 430px; top:255px">Quantity<p></p></label>
@@ -287,19 +304,7 @@ input {
 	</select>
   
 
-   
-  <label for="autodate"><p style=" position:absolute; text-align: center; left: 768px; top:55px">Date.</p></label>
-<input class="datecanvas" id="date" name="autodate" style="
-    left: 817px;
-    top: 66px;;"readonly="readonly">     
   
-  <label for="invsq"><p style="position:absolute;text-align: center;left: 713px;top:15px;width: 100px;">Invoice No.</p></label>
-<input class="invoicecanvas" id="invoiceseq" name="invsq" style=" left: 817px; top: 27px;" readonly="readonly";>  
-<button type="button" class="button" onclick="myFunction();" style="
-    left: 887px;
-    top: 25px;"><img src=".\img\newinvoice.png" width="30px"></button>
-
- 
   
   
   
@@ -419,10 +424,18 @@ function autocomplete(inp, arr) {
 }
 
 /*An array containing all the country names in the world:*/
-var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+var products = ["108TW1",
+"108TW2","108TWCH","108TWLN","101TW","123TW1","123TW2","124TW","125TW","126TW","126TW3","103TWWH1","103TWWH2",
+"103TWWH3","127TW","101VT","128VTCD","129VT","130VT","131VT","128VTCM","101BFS","101BFR","101BFT","129BF",
+"128BFT","129BFC","131BF1","131BF2","130BFE1","130BFE2","130BFP1","130BFP2","100LCH","101LWHB","101LWHJ",
+"101LWHS","102LCH","102LCL","102LWH","103LCH","103LWH","104LCH","105LCH",
+"106LCH","107LWH","108LWH","109LCMJ","110LWH","111LGJ","101LV","102LV",
+"101PCCMJ","101PCWH","101PCGJ","103PCCL","102PCGJ","102PCGJDB","101PPJ","102PPJ",
+"102PPGJ","103PPGJ","103PPGJJ","112DT","113DT1","113DT2","114DT","105DT","115DT","116DT","117DT","118DT","119DT","120DT","121DT","122DT","101DTS","101DTB","103TWL","103TWS",
+"103TWP","102TWCL","102TWCH","102TWLN1","102TWB1","102TWB2","102TWLN2"];
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-autocomplete(document.getElementById("myInput"), countries);
+autocomplete(document.getElementById("myInput"), products);
 </script>
 
 
