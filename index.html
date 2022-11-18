@@ -196,7 +196,7 @@ input {
 <label for="fcode" ><p style=" position:absolute; text-align: center; left: 140px; top:238px">F.Code</p></label>
 <div class="autocomplete" style="width:216px;left: 200px;top: 251px;text-align:center">
 <input style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" 
-	   id="myInput" type="text" name="fcode" placeholder="101....">
+	   id="myInput" type="text" name="fcode" placeholder="101...." onchange="autofill()">
 </div>
 
 <!-- Quantity --> 
@@ -215,9 +215,14 @@ input {
 <!-- Fabric Name -->
 <label for="fname"><p style=" position:absolute; text-align: center; left: 100px; top:295px">Fabric Name</p></label>
 <div class="maindatacanvas1">
-<input tabindex="-1" readonly="readonly" style="background:#cde0e9;width:325px;height:35px;border-radius: 15px;" 
-		type="text" name="fname" placeholder="Fabric Name">
+<input tabindex="-1" readonly="readonly" style="background:#cde0e9;width:325px;height:35px;border-radius: 15px;text-align:center" 
+		type="text" name="fname" placeholder="Fabric Name" id='field2'>
 </div>
+
+
+<!-- <input type='text' id='field1' onchange="autofill()"> -->
+<!-- <input type='text' id='field2'> -->
+
 	
 <!-- Former Customer -->	
 <label for="prvcus" <p style="position:absolute;text-align: center;left: 731px;top:143px;width: 100px;">Former Cus.</p></label>
@@ -260,7 +265,21 @@ input {
 </form>
 </div>
 
-
+<script>
+function autofill(){
+    var x = document.getElementById('myInput').value;
+    if(x=="108TW1")
+    {
+        document.getElementById('field2').value= "Handloom Towel Small";
+    }
+	else if (x=="108TW2") {
+		document.getElementById('field2').value= "Handloom Towel Big";
+		}
+	else {
+		document.getElementById('field2').value= "Others";
+}
+}
+</script>
 
 
 <script>
