@@ -70,6 +70,15 @@ select {
 	overflow:auto;
 }
 
+.maindatacanvas1{
+	border-radius: 15px;
+	position:absolute;
+	border:none;
+	overflow:auto;
+	top:303px;
+	left:200px;
+}
+
 #submitcanvas {
 	border-radius: 15px;
 	background: #cce8ff;
@@ -102,7 +111,8 @@ img:hover {
 input::placeholder {
     opacity: .7;
     color: grey;
-	font-size:15px;	
+	font-size:15px;
+	text-align:center;
 }
 
 
@@ -185,7 +195,8 @@ input {
 <!-- F.Code --> 
 <label for="fcode" ><p style=" position:absolute; text-align: center; left: 140px; top:238px">F.Code</p></label>
 <div class="autocomplete" style="width:216px;left: 200px;top: 251px;text-align:center">
-<input style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" id="myInput" type="text" name="fcode" placeholder="101....">
+<input style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" 
+	   id="myInput" type="text" name="fcode" placeholder="101....">
 </div>
 
 <!-- Quantity --> 
@@ -203,9 +214,10 @@ input {
 
 <!-- Fabric Name -->
 <label for="fname"><p style=" position:absolute; text-align: center; left: 100px; top:295px">Fabric Name</p></label>
-<input tabindex="-1"  readonly="readonly"; id="maindatacanvas" style="background:#cde0e9;top:306px;left:200px;width:325px;padding:0px;height:35px;" 
-	   type="text" name="fname" placeholder="Fabric Name">
-
+<div class="maindatacanvas1">
+<input tabindex="-1" readonly="readonly" style="background:#cde0e9;width:325px;height:35px;border-radius: 15px;" 
+		type="text" name="fname" placeholder="Fabric Name">
+</div>
 	
 <!-- Former Customer -->	
 <label for="prvcus" <p style="position:absolute;text-align: center;left: 731px;top:143px;width: 100px;">Former Cus.</p></label>
@@ -243,7 +255,13 @@ input {
 <input id="submitcanvas" style="top:353px;left:500px;background:#0072b2;color:white;width:100px;" type="submit" value="+ Log">
 
 
+
+
 </form>
+</div>
+
+
+
 
 <script>
 <!-- Today's Date Function -->
@@ -372,10 +390,6 @@ var products = ["108TW1",
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), products);
 </script>
-
-
-
-</div>
 
 
 </body></html>
