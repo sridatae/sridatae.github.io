@@ -2,7 +2,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <title>SMT Invoice</title>
-  <link rel="icon" type="image/x-icon" href=".\img\SMT_favicon.png">
+<link rel="icon" type="image/x-icon" href=".\img\SMT_favicon.png">
  
 <meta property="og:title" content="SMT - Invoice">
 <meta property="og:type" content="website">
@@ -74,6 +74,7 @@ select {
   font-size:20px;
   position:absolute;
   border:none;
+  overflow:auto;
    <!-- style="position:absolute; text-align: center; padding-left: 91%;top:35px" -->
 }
 
@@ -185,119 +186,80 @@ input {
 
 <div class="center">
 
- <!-- style="position:absolute;background: #cde0e9;padding: 5px;width: 50px;right:40px;top:10px;"  -->
-<img src=".\img\SMT1.jpg" alt="SMT" width="150px" height="auto" style="
-    padding-top: 10px;
-    padding-left: 10px;
-	position:absolute;">
+<!-- SMT Logo -->
+<img src=".\img\SMT1.jpg" alt="SMT" width="150px" height="auto" style="padding-top: 10px; padding-left: 10px; position:absolute;">
 
+<!-- Dropdown arrows -->
 <img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 681px;z-index: 1;top: 265px;">
 <img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 911px;z-index: 1;top: 151px;">
 <img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 912px;z-index: 1;top: 200px;">
 <img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 938px;z-index: 1;top: 250px;">
 
+<!-- White line splits -->
+<div style="position:absolute;left:673px;top:250px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
+<div style="position:absolute;left:905px;top:185px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
+<div style="position:absolute;left:903px;top:137px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
+<div style="position:absolute;left:930px;top:235px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
+
+
 <form action="/action_page.php" autocomplete="off">
 
+<!-- Date -->
+<label for="date"><p style=" position:absolute; text-align: center; left: 768px; top:55px">Date.</p></label>
+<input tabindex="-1" class="datecanvas" id="date" name="date" style="left:817px; top:66px;;"readonly="readonly">     
 
- 
-  <label for="date"><p style=" position:absolute; text-align: center; left: 768px; top:55px">Date.</p></label>
-<input tabindex="-1" class="datecanvas" id="date" name="date" style="
-    left: 817px;
-    top: 66px;;"readonly="readonly">     
-  
-  
+<!-- CustomerName --> 
+<label for="cname"><p style=" position:absolute; text-align: center; left: 70px; top:129px;">Customer Name</p></label>
+<input id="maindatacanvas" style="top: 140px;left:200px;width: 325px;height:35px;padding:0px" type="text" name="cname" placeholder="Enter.">
 
-  <label for="cname"><p style=" position:absolute; text-align: center; left: 70px; top:129px;">Customer Name</p></label>
-  <input id="maindatacanvas" style="top: 140px;left:200px;width: 325px;height:35px;padding:0px" type="text" name="cname" placeholder="Enter."><br><br>
-  
-  <label for="address" <p="" style=" position:absolute; text-align: center; left: 130px; top:200px">Address<p></p></label>
-  <input id="maindatacanvas" style="top: 195px;left:200px;width: 325px;padding:0px;height:35px;" type="text" name="address" placeholder="Enter."><br><br>
-  
-  <label for="fcode" <p="" style=" position:absolute; text-align: center; left: 140px; top:255px">F.Code<p></p></label>
-  <div class="autocomplete" style="width:216px;left: 200px;top: 251px;text-align:center">
-    <input style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" id="myInput" type="text" name="fcode" placeholder="101....">
-  </div>
+<!-- Address -->   
+<label for="address"><p style="position:absolute; text-align: center; left: 130px; top:183px">Address</p></label>
+<input id="maindatacanvas" style="top: 195px;left:200px;width: 325px;padding:0px;height:35px;" type="text" name="address" placeholder="Enter.">
 
-  <label for="qnty" <p="" style=" position:absolute; text-align: center; left: 430px; top:255px">Quantity<p></p></label>
-  <input id="maindatacanvas" style="top: 250px;left:500px; width:100px;padding:0px;height:37px;border-radius:18px;" type="text" name="qnty" placeholder="Enter."><br><br>
- 
- <div style="
-    position: absolute;
-    left: 673px;
-    top: 250px;
-    z-index: 1;
-	border-left: 2px solid white;
-  height: 35px;
-"> 
- </div>
- 
-<div style="
-    position: absolute;
-    left: 905px;
-    top: 185px;
-    z-index: 1;
-    border-left: 2px solid white;ed;
-    height: 35px;
-"> 
- </div>
- 
- 
-<div style="
-    position: absolute;
-    left: 903px;
-    top: 137px;
-    z-index: 1;
-    border-left: 2px solid white;
-    height: 35px;
-"> 
- </div>
- 
- 
- <div style="
-    position: absolute;
-    left: 930px;
-    top: 235px;
-    z-index: 1;
-    border-left: 2px solid white;
-    height: 35px;
-"> 
- </div>
- 
- 
- 
- <label for="qntp"></label>
+<!-- F.Code --> 
+<label for="fcode" <p="" style=" position:absolute; text-align: center; left: 140px; top:255px">F.Code<p></p></label>
+<div class="autocomplete" style="width:216px;left: 200px;top: 251px;text-align:center">
+<input style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" id="myInput" type="text" name="fcode" placeholder="101....">
+</div>
 
+<!-- Quantity --> 
+<label for="qnty"> <p style=" position:absolute; text-align: center; left: 430px; top:238px">Quantity</p></label>
+<input id="maindatacanvas" style="top: 250px;left:500px;width:100px;padding:0px;height:37px;border-radius:18px;"
+	   type="text" name="qnty" placeholder="Enter." pattern="[0-9]+">
+
+<!-- Quantity Type -->
+<label for="qntp"></label>
 	<select name="qntp" id="qntp" style="width: 100px;top: 250px;left:605px;padding-right: 28px;height:35px">
 		<option value="Piece">pc</option>
 		<option value="meter">m</option>
 		<option value="kg">kg</option>
 	</select>
 
-	<label for="fname"><p style=" position:absolute; text-align: center; left: 100px; top:295px">Fabric Name</p></label>
-  <input tabindex="-1"  readonly="readonly"; id="maindatacanvas" 
-	style="background: #cde0e9;top: 306px;left:200px;width: 325px;padding:0px;height:35px;" 
-		type="text" name="fname" placeholder="Fabric Name"><br><br>
-	
-	
-	<label for="prvcus" <p="" style="position:absolute;text-align: center;left: 731px;top:143px;width: 100px;">Former Cus.<p></p></label>
+<!-- Fabric Name -->
+<label for="fname"><p style=" position:absolute; text-align: center; left: 100px; top:295px">Fabric Name</p></label>
+<input tabindex="-1"  readonly="readonly"; id="maindatacanvas" style="background:#cde0e9;top:306px;left:200px;width:325px;padding:0px;height:35px;" 
+	   type="text" name="fname" placeholder="Fabric Name">
 
-	<select name="prvcus" id="prvcus" style="width: 100px;text-align: center;left: 835px;height:35px;top:137px;padding-right: 28px;">
-		<option value="No">No</option>
+	
+<!-- Former Customer -->	
+<label for="prvcus" <p style="position:absolute;text-align: center;left: 731px;top:143px;width: 100px;">Former Cus.</p></label>
+	<select name="prvcus" id="prvcus" style="width:100px;text-align:center;left:835px;height:35px;top:137px;padding-right:28px;">
+		<option value="No" >No</option>
 		<option value="Yes">Yes</option>
 	</select>
-	
-	<label for="slrp" <p="" style=" position:absolute; text-align: center; left: 740px; top:189px;">Salesperson<p></p></label>
 
+<!-- Salesperson-->
+<label for="slrp"> <p style="position:absolute; text-align: center; left: 740px; top:175px;">Salesperson</p></label>
 	<select name="slrp" id="slrp" style="position:absolute;width: 100px;text-align: center;left: 835px;height:35px;top:185px;padding-right: 25px;">
 		<option value="Raju">Raju</option>
 		<option value="Akhila">Akhila</option>
 		<option value="Omkar">Omkar</option>
 		<option value="Aruna">Aruna</option>
 	</select>
-	
-	<label for="pmd" <p="" style="position:absolute;text-align: center;left: 758px;top: 242px;width: 70px;">P. Mode<p></p></label>
 
-	<select name="pmd" id="pmd" style="position:absolute;width: 128px;text-align: center;left: 835px;height:35px;top:235px;padding-right: 30px;">
+<!-- P. Mode-->	
+<label for="pmd" ><p style="position:absolute;text-align:center;left:758px;top:226px;width:70px;">P. Mode</p></label>
+	<select name="pmd" id="pmd" style="position:absolute;width: 128px;text-align: center;left: 835px;height:35px;top:235px;padding-right:30px;">
 		<option value="Credit Card">Credit Card</option>
 		<option value="Debit Card">Debit Card</option>
 		<option value="UPI">UPI</option>
@@ -305,15 +267,17 @@ input {
 		<option value="Bank Transfer">Bank Transfer</option>
 	</select>
   
+<!-- Invoice Sequence No.-->	
+<label for="invsq"><p style="position:absolute;text-align:center;left:713px;top:15px;width:100px;">Invoice No.</p></label>
+<input tabindex="-1" class="invoicecanvas" id="invoiceseq" name="invsq" style=" left:817px;top:27px;" readonly="readonly";>  
+<button type="button" class="button" onclick="myFunction();" style="left:887px;top:25px;"><img src=".\img\newinvoice.png" width="30px"></button>
 
-  <label for="invsq"><p style="position:absolute;text-align: center;left: 713px;top:15px;width: 100px;">Invoice No.</p></label>
-<input tabindex="-1" class="invoicecanvas" id="invoiceseq" name="invsq" style=" left: 817px; top: 27px;" readonly="readonly";>  
-<button type="button" class="button" onclick="myFunction();" style=" left: 887px; top: 25px;"><img src=".\img\newinvoice.png" width="30px"></button>
+ 
+<!-- Submit-->  
+<input id="submitcanvas" style="top:353px;left:500px;background:#0072b2;color:white;width:100px;" type="submit" value="+ Log">
 
-  
-  
-  
-<input id="submitcanvas" style="top: 353px;left: 500px;background:#0072b2;color:white;width: 100px;" type="submit" value="+ Log"></form>
+
+</form>
 
 <script>
 <!-- Today's Date Function -->
@@ -322,7 +286,7 @@ document.getElementById("date").value=currentdate;
 </script>
 
 <script>
-<!-- Invoice Squencer Function-->
+<!-- Invoice Squencer-->
 var seq=0;
 function myFunction() {
 seq=seq+1;
