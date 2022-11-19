@@ -193,9 +193,10 @@ input {
 <input id="maindatacanvas" style="top: 195px;left:200px;width: 325px;padding:0px;height:35px;" type="text" name="address" placeholder="Enter.">
 
 <!-- F.Code --> 
+
 <label for="fcode" ><p style=" position:absolute; text-align: center; left: 140px; top:238px">F.Code</p></label>
 <div class="autocomplete" style="width:216px;left: 200px;top: 251px;text-align:center">
-<input style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" 
+<input onfocus="this.value=''" style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" 
 	   id="myInput" type="text" name="fcode" placeholder="101...." onchange="autofill()">
 </div>
 
@@ -265,9 +266,10 @@ input {
 </form>
 </div>
 
+
 <script>
 function autofill(){
-    var x = document.getElementById('myInput').value;
+    let x = document.getElementById('myInput').value;
     if(x=="108TW1")
     {
         document.getElementById('field2').value= "Handloom Towel Small";
@@ -276,7 +278,7 @@ function autofill(){
 		document.getElementById('field2').value= "Handloom Towel Big";
 		}
 	else {
-		document.getElementById('field2').value= "Others";
+		document.getElementById('field2').value= x;
 }
 }
 </script>
