@@ -166,13 +166,13 @@ input {
 <img src=".\img\SMT1.jpg" alt="SMT" width="150px" height="auto" style="padding-top: 10px; padding-left: 10px; position:absolute;">
 
 <!-- Dropdown arrows -->
-<img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 681px;z-index: 1;top: 265px;">
+
 <img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 911px;z-index: 1;top: 151px;">
 <img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 912px;z-index: 1;top: 200px;">
 <img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 938px;z-index: 1;top: 250px;">
 
 <!-- White line splits -->
-<div style="position:absolute;left:673px;top:250px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
+
 <div style="position:absolute;left:905px;top:185px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
 <div style="position:absolute;left:903px;top:137px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
 <div style="position:absolute;left:930px;top:235px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
@@ -196,43 +196,55 @@ input {
 
 <label for="fcode" ><p style=" position:absolute; text-align: center; left: 140px; top:238px">F.Code</p></label>
 <div class="autocomplete" style="width:216px;left: 200px;top: 251px;text-align:center">
-<input onfocus="this.value=''" style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" 
-	   id="myInput" type="text" name="fcode" placeholder="101...." onchange="autofill()">
+<input  style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" 
+	   id="myInput" type="text" name="fcode" placeholder="101...">
 </div>
-
+<button type="button" class="button" onclick="copytextfunc();" style="left: 412px;top: 249px;"><img src=".\img\searchbuton.png" width="33px"></button>
+<!-- onfocus="this.value=''" -->
 <!-- Quantity --> 
+<div style="position:absolute;left: 48px;">
+<div style="position:absolute;">
 <label for="qnty"> <p style=" position:absolute; text-align: center; left: 430px; top:238px">Quantity</p></label>
 <input id="maindatacanvas" style="top: 250px;left:500px;width:100px;padding:0px;height:37px;border-radius:18px;"
 	   type="text" name="qnty" placeholder="Enter." pattern="[0-9]+">
+</div>
 
 <!-- Quantity Type -->
+<div style="position:absolute;">
+<img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 681px;z-index: 1;top: 265px;">
+<div style="position:absolute;left:673px;top:250px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
 <label for="qntp"></label>
 	<select name="qntp" id="qntp" style="width: 100px;top: 250px;left:605px;padding-right: 28px;height:35px">
 		<option value="Piece">pc</option>
 		<option value="meter">m</option>
 		<option value="kg">kg</option>
 	</select>
-
+</div>
+</div>
 <!-- Fabric Name -->
-<label for="fname"><p style=" position:absolute; text-align: center; left: 100px; top:295px">Fabric Name</p></label>
+<div style="position:absolute;">
+<label for="fname"><p style="position:absolute;text-align: center;left: 100px;top:295px;width: 100px;">Fabric Name</p></label>
 <div class="maindatacanvas1">
 <input tabindex="-1" readonly="readonly" style="background:#cde0e9;width:325px;height:35px;border-radius: 15px;text-align:center" 
 		type="text" name="fname" placeholder="Fabric Name" id='field2'>
 </div>
-
+</div>
 
 <!-- <input type='text' id='field1' onchange="autofill()"> -->
 <!-- <input type='text' id='field2'> -->
 
 	
-<!-- Former Customer -->	
+<!-- Former Customer -->
+<div style="position:absolute;">	
 <label for="prvcus" <p style="position:absolute;text-align: center;left: 731px;top:143px;width: 100px;">Former Cus.</p></label>
 	<select name="prvcus" id="prvcus" style="width:100px;text-align:center;left:835px;height:35px;top:137px;padding-right:28px;">
 		<option value="No" >No</option>
 		<option value="Yes">Yes</option>
 	</select>
+</div>
 
 <!-- Salesperson-->
+<div style="position:absolute;">
 <label for="slrp"> <p style="position:absolute; text-align: center; left: 740px; top:175px;">Salesperson</p></label>
 	<select name="slrp" id="slrp" style="position:absolute;width: 100px;text-align: center;left: 835px;height:35px;top:185px;padding-right: 25px;">
 		<option value="Raju">Raju</option>
@@ -240,8 +252,10 @@ input {
 		<option value="Omkar">Omkar</option>
 		<option value="Aruna">Aruna</option>
 	</select>
+</div>
 
 <!-- P. Mode-->	
+<div style="position:absolute;">
 <label for="pmd" ><p style="position:absolute;text-align:center;left:758px;top:226px;width:70px;">P. Mode</p></label>
 	<select name="pmd" id="pmd" style="position:absolute;width: 128px;text-align: center;left: 835px;height:35px;top:235px;padding-right:30px;">
 		<option value="Credit Card">Credit Card</option>
@@ -250,7 +264,7 @@ input {
 		<option value="Cash">Cash</option>
 		<option value="Bank Transfer">Bank Transfer</option>
 	</select>
-  
+ </div>
 <!-- Invoice Sequence No.-->	
 <label for="invsq"><p style="position:absolute;text-align:center;left:713px;top:15px;width:100px;">Invoice No.</p></label>
 <input tabindex="-1" class="invoicecanvas" id="invoiceseq" name="invsq" style=" left:817px;top:27px;" readonly="readonly";>  
@@ -267,21 +281,6 @@ input {
 </div>
 
 
-<script>
-function autofill(){
-    let x = document.getElementById('myInput').value;
-    if(x=="108TW1")
-    {
-        document.getElementById('field2').value= "Handloom Towel Small";
-    }
-	else if (x=="108TW2") {
-		document.getElementById('field2').value= "Handloom Towel Big";
-		}
-	else {
-		document.getElementById('field2').value= x;
-}
-}
-</script>
 
 
 <script>
@@ -399,18 +398,311 @@ function autocomplete(inp, arr) {
 
 /*An array containing all the country names in the world:*/
 var products = ["108TW1",
-"108TW2","108TWCH","108TWLN","101TW","123TW1","123TW2","124TW","125TW","126TW","126TW3","103TWWH1","103TWWH2",
+"108TWCH","108TWLN","101TW","123TW1","123TW2","124TW","125TW","126TW","126TW3","103TWWH1","103TWWH2",
 "103TWWH3","127TW","101VT","128VTCD","129VT","130VT","131VT","128VTCM","101BFS","101BFR","101BFT","129BF",
 "128BFT","129BFC","131BF1","131BF2","130BFE1","130BFE2","130BFP1","130BFP2","100LCH","101LWHB","101LWHJ",
-"101LWHS","102LCH","102LCL","102LWH","103LCH","103LWH","104LCH","105LCH",
-"106LCH","107LWH","108LWH","109LCMJ","110LWH","111LGJ","101LV","102LV",
-"101PCCMJ","101PCWH","101PCGJ","103PCCL","102PCGJ","102PCGJDB","101PPJ","102PPJ",
-"102PPGJ","103PPGJ","103PPGJJ","112DT","113DT1","113DT2","114DT","105DT","115DT","116DT","117DT","118DT","119DT","120DT","121DT","122DT","101DTS","101DTB","103TWL","103TWS",
-"103TWP","102TWCL","102TWCH","102TWLN1","102TWB1","102TWB2","102TWLN2"];
+"101LWHS","102LCH","102LCL","102LWH","103LCH","103LWH","104LCH","105LCH","106LCH","107LWH","108LWH",
+"109LCMJ","110LWH","111LGJ","101LV","102LV","101PCCMJ","101PCWH","101PCGJ","103PCCL","102PCGJ","102PCGJDB",
+"101PPJ","102PPJ","102PPGJ","103PPGJ","103PPGJJ","112DT","113DT1","113DT2","114DT","105DT","115DT","116DT",
+"117DT","118DT","119DT","120DT","121DT","122DT","101DTS","101DTB","103TWL","103TWS","103TWP","102TWCL",
+"102TWCH","102TWLN1","102TWB1","102TWB2","102TWLN2"];
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), products);
 </script>
+
+
+
+
+<script>
+ function copytextfunc() {
+   /* Get the text field */
+   var copyText = document.getElementById("myInput");
+
+   /* Select the text field */
+   copyText.select();
+
+   /* Copy the text inside the text field */
+   document.execCommand("Copy");
+
+   /* Alert the copied text */
+   <!-- alert("Copied the text: " + copyText.value); -->
+   
+   if(copyText.value=="100LCH")
+    {
+        document.getElementById('field2').value= "Blue Star Lungi";
+    }
+	else if (copyText.value=="101BFR") {
+		document.getElementById('field2').value= "RamRaj Romex Briefs Half";
+		}
+	else if (copyText.value=="101BFS") {
+		document.getElementById('field2').value= "RamRaj Surya Briefs Half";
+		}
+	else if (copyText.value=="101BFT") {
+		document.getElementById('field2').value= "RamRaj Target Briefs Half";
+		}
+	else if (copyText.value=="101DTB") {
+		document.getElementById('field2').value= "RamRaj Dhoti Big Border";
+		}
+	else if (copyText.value=="101DTS") {
+		document.getElementById('field2').value= "RajRaj Dhoti Small Border";
+		}
+	else if (copyText.value=="101LV") {
+		document.getElementById('field2').value= "RamRaj Velkro Lungi";
+		}
+	else if (copyText.value=="101LWHB") {
+		document.getElementById('field2').value= "RamRaj White Lungi Big";
+		}
+	else if (copyText.value=="101LWHJ") {
+		document.getElementById('field2').value= "Ramraj White Lungi Jari";
+		}
+	else if (copyText.value=="101LWHS") {
+		document.getElementById('field2').value= "RamRaj White Lungi Small";
+		}
+	else if (copyText.value=="102LCH") {
+		document.getElementById('field2').value= "Kanmani Lungi Checks";
+		}	
+	else if (copyText.value=="102LCL") {
+		document.getElementById('field2').value= "Kanmani Lungi Color";
+		}
+	else if (copyText.value=="102LWH") {
+		document.getElementById('field2').value= "Kanmani White Lungi";
+		}
+	else if (copyText.value=="103LCH") {
+		document.getElementById('field2').value= "NKT Chakra Lungi";
+		}
+	else if (copyText.value=="103LWH") {
+		document.getElementById('field2').value= "NKT White Lungi";
+		}
+	else if (copyText.value=="104LCH") {
+		document.getElementById('field2').value= "Gold Lungi Checked";
+		}
+	else if (copyText.value=="105LCH") {
+		document.getElementById('field2').value= "Bombay Dyeing Lungi Checked";
+		}
+	else if (copyText.value=="106LCH") {
+		document.getElementById('field2').value= "Sanku Lungi Checked";
+		}
+	else if (copyText.value=="107LWH") {
+		document.getElementById('field2').value= "Kanpel White Lungi";
+		}
+	else if (copyText.value=="108LWH") {
+		document.getElementById('field2').value= "Handloom White Lungi";
+		}
+	else if (copyText.value=="109LCMJ") {
+		document.getElementById('field2').value= "Lungi Cream Jari";
+		}
+	else if (copyText.value=="110LWH") {
+		document.getElementById('field2').value= "Royal Plus White Lungi";
+		}
+	else if (copyText.value=="111LGJ") {
+		document.getElementById('field2').value= "Tulasi Lugi Ganga Jamuna";
+		}
+	else if (copyText.value=="102LV") {
+		document.getElementById('field2').value= "Kanmani Velkro Lungo";
+		}
+	else if (copyText.value=="101PCCMJ") {
+		document.getElementById('field2').value= "RamRaj Jari Cream Pancha Jari";
+		}
+	else if (copyText.value=="101PCWH") {
+		document.getElementById('field2').value= "RamRaj White Pancha";
+		}
+	else if (copyText.value=="101PCGJ") {
+		document.getElementById('field2').value= "RamRaj Ganga Jamuna Pancha";
+		}
+	else if (copyText.value=="103PCCL") {
+		document.getElementById('field2').value= "NKT Pancha Colors";
+		}
+	else if (copyText.value=="102PCGJ") {
+		document.getElementById('field2').value= "Kanmani Ganga Jamuna Pancha";
+		}
+	else if (copyText.value=="102PCGJDB") {
+		document.getElementById('field2').value= "Kanmani Ganga Jamuna Pancha Diff Border";
+		}
+	else if (copyText.value=="101PPJ") {
+		document.getElementById('field2').value= "RamRaj Pattu Pancha Jari";
+		}
+	else if (copyText.value=="102PPJ") {
+		document.getElementById('field2').value= "Kanmani Pattu Pancha Jari";
+		}
+	else if (copyText.value=="102PPGJ") {
+		document.getElementById('field2').value= "Kanmani Pattu PanchaGangaJamuna";
+		}
+	else if (copyText.value=="103PPGJ") {
+		document.getElementById('field2').value= "NKT Pattu Pancha GangaJamuna";
+		}
+	else if (copyText.value=="103PPGJJ") {
+		document.getElementById('field2').value= "NKT Pattu PanchaGangaJamuna Jari";
+		}
+	else if (copyText.value=="112DT") {
+		document.getElementById('field2').value= "Ashoka Dhoti";
+		}
+	else if (copyText.value=="113DT1") {
+		document.getElementById('field2').value= "Paramsukh Dhoti 7.3";
+		}
+	else if (copyText.value=="113DT2") {
+		document.getElementById('field2').value= "Paramsukh Dhoti 8";
+		}
+	else if (copyText.value=="114DT") {
+		document.getElementById('field2').value= "Parasmani Dhoti";
+		}
+	else if (copyText.value=="105DT") {
+		document.getElementById('field2').value= "Bombay Dyeing Dhoti";
+		}
+	else if (copyText.value=="115DT") {
+		document.getElementById('field2').value= "TexLord Dhoti";
+		}
+	else if (copyText.value=="116DT") {
+		document.getElementById('field2').value= "Maharaj Dhoti";
+		}
+	else if (copyText.value=="117DT") {
+		document.getElementById('field2').value= "LordMaster Dhoti";
+		}
+	else if (copyText.value=="118DT") {
+		document.getElementById('field2').value= "GinniGold Dhoti";
+		}
+	else if (copyText.value=="119DT") {
+		document.getElementById('field2').value= "Kautar Dhoti";
+		}
+	else if (copyText.value=="120DT") {
+		document.getElementById('field2').value= "Sunrise Dhoti";
+		}
+	else if (copyText.value=="121DT") {
+		document.getElementById('field2').value= "Netaji Dhoti";
+		}
+	else if (copyText.value=="122DT") {
+		document.getElementById('field2').value= "Discovery Dhoti";
+		}
+	else if (copyText.value=="101DTS") {
+		document.getElementById('field2').value= "RajRaj Dhoti Small Border";
+		}
+	else if (copyText.value=="101DTB") {
+		document.getElementById('field2').value= "RamRaj Dhoti Big Border";
+		}
+	else if (copyText.value=="103TWL") {
+		document.getElementById('field2').value= "NKT Towel Lilly";
+		}
+	else if (copyText.value=="103TWS") {
+		document.getElementById('field2').value= "NKT Towels Spark";
+		}
+	else if (copyText.value=="103TWP") {
+		document.getElementById('field2').value= "NKT Towels Polo";
+		}
+	else if (copyText.value=="102TWCL") {
+		document.getElementById('field2').value= "Kanmani Towels Color";
+		}
+	else if (copyText.value=="102TWCH") {
+		document.getElementById('field2').value= "Kanmani Towels Checked";
+		}
+	else if (copyText.value=="102TWLN1") {
+		document.getElementById('field2').value= "Kanmani Towels Lines";
+		}
+	else if (copyText.value=="102TWB1") {
+		document.getElementById('field2').value= "Kanmani Towels Baby Printed";
+		}
+	else if (copyText.value=="102TWB2") {
+		document.getElementById('field2').value= "Kanmani Towels Baby Printed Big";
+		}
+	else if (copyText.value=="102TWLN2") {
+		document.getElementById('field2').value= "Kanmani Towels Lines Big";
+		}
+	else if (copyText.value=="108TW1") {
+		document.getElementById('field2').value= "Handloom Towel Small";
+		}
+	else if (copyText.value=="108TW2") {
+		document.getElementById('field2').value= "Handloom Towel Big";
+		}
+	else if (copyText.value=="108TWCH") {
+		document.getElementById('field2').value= "Handloom Towel Checked";
+		}
+	else if (copyText.value=="108TWLN") {
+		document.getElementById('field2').value= "Handloom Towel Lines";
+		}
+	else if (copyText.value=="101TW") {
+		document.getElementById('field2').value= "RamRaj Towels";
+		}
+	else if (copyText.value=="123TW1") {
+		document.getElementById('field2').value= "VVJ Towels Regular";
+		}
+	else if (copyText.value=="123TW2") {
+		document.getElementById('field2').value= "VVJ Towels Large";
+		}
+	else if (copyText.value=="124TW") {
+		document.getElementById('field2').value= "Ayyappa Towels";
+		}
+	else if (copyText.value=="125TW") {
+		document.getElementById('field2').value= "Royal King Towels";
+		}
+	else if (copyText.value=="126TW") {
+		document.getElementById('field2').value= "Turkey Towels";
+		}
+	else if (copyText.value=="126TW3") {
+		document.getElementById('field2').value= "Turkey Towels Baby";
+		}
+	else if (copyText.value=="103TWWH1") {
+		document.getElementById('field2').value= "NKT Towels White";
+		}
+	else if (copyText.value=="103TWWH2") {
+		document.getElementById('field2').value= "NKT Towels White Thread";
+		}
+	else if (copyText.value=="103TWWH3") {
+		document.getElementById('field2').value= "NKT Towels White Jari";
+		}
+	else if (copyText.value=="127TW") {
+		document.getElementById('field2').value= "Bheem Towels";
+		}
+	else if (copyText.value=="101VT") {
+		document.getElementById('field2').value= "RamRaj Vests";
+		}
+	else if (copyText.value=="128VTCD") {
+		document.getElementById('field2').value= "Essa Vests Cold";
+		}
+	else if (copyText.value=="129VT") {
+		document.getElementById('field2').value= "OXO Vests";
+		}
+	else if (copyText.value=="130VT") {
+		document.getElementById('field2').value= "Jockey Vests";
+		}
+	else if (copyText.value=="131VT") {
+		document.getElementById('field2').value= "Vilan Vests";
+		}
+	else if (copyText.value=="128VTCM") {
+		document.getElementById('field2').value= "Essa Cam Vests";
+		}
+	else if (copyText.value=="129BF") {
+		document.getElementById('field2').value= "Oxo Briefs Full";
+		}
+	else if (copyText.value=="128BFT") {
+		document.getElementById('field2').value= "Essa Briefs Trend Full";
+		}
+	else if (copyText.value=="129BFC") {
+		document.getElementById('field2').value= "Essa Briefs Classic Half";
+		}
+	else if (copyText.value=="131BF1") {
+		document.getElementById('field2').value= "Vilan Briefs Full";
+		}
+	else if (copyText.value=="131BF2") {
+		document.getElementById('field2').value= "Vilan Briefs Half";
+		}
+	else if (copyText.value=="130BFE1") {
+		document.getElementById('field2').value= "Jockey Elance Full";
+		}
+	else if (copyText.value=="130BFE2") {
+		document.getElementById('field2').value= "Jockey Elance Half";
+		}
+	else if (copyText.value=="130BFP1") {
+		document.getElementById('field2').value= "Jockey Pop Color Full";
+		}
+	else if (copyText.value=="130BFP2") {
+		document.getElementById('field2').value= "Jockey Pop Color Half";
+		}
+	else {
+		document.getElementById('field2').value= "Item Not Found";
+		}
+ }
+</script>
+
+
 
 
 </body></html>
