@@ -81,11 +81,10 @@ select {
 
 #submitcanvas {
 	border-radius: 15px;
-	background: #cce8ff;
 	padding: 5px; 
-	font-size:20px;
+	font-size:25px;
+	font-weight:700;
 	position:absolute;
-	border:none;
 }
 
 #submitcanvas:hover {
@@ -154,6 +153,20 @@ input {
 	color: #ffffff; 
 }
 
+
+<!-- table, td { -->
+  <!-- border: none; -->
+  <!-- text-align:center; -->
+  <!-- background-color: #cce8ff;  -->
+<!-- }	 -->
+	
+
+table {border: none; border-collapse: collapse; width: 600px; position:absolute;left:17px;top:415px;z-index:1}
+th,td {text-align: center; padding: 6px; border: none; border-radius:10px;}
+tr:nth-child(even) {background-color: #cce8ff; color:black;}
+tr:nth-child(odd) {background-color: #0072b2;color:white;}
+
+
 </style>
 
 </head>
@@ -205,8 +218,8 @@ input {
 <div style="position:absolute;left: 34px;">
 <div style="position:absolute;">
 <label for="qnty"> <p style=" position:absolute; text-align: center; left: 430px; top:242px">Quantity</p></label>
-<input id="maindatacanvas" style="top: 250px;left:500px;width:100px;padding:0px;height:37px;border-radius:18px;"
-	   type="text" name="qnty" placeholder="Enter." pattern="[0-9]+">
+<input style="position:absolute;top: 250px;left:500px;width:100px;padding:0px;height:37px;border-radius:18px;text-align:center"
+	   type="text" name="qnty" placeholder="Enter." pattern="[0-9]+" id="qnty">
 </div>
 
 <!-- Quantity Type -->
@@ -215,8 +228,8 @@ input {
 <div style="position:absolute;left:673px;top:250px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
 <label for="qntp"></label>
 	<select name="qntp" id="qntp" style="width: 100px;top: 250px;left:605px;padding-right: 28px;height:35px">
-		<option value="Piece">pc</option>
-		<option value="meter">m</option>
+		<option value="pc">pc</option>
+		<option value="m">m</option>
 		<option value="kg">kg</option>
 	</select>
 </div>
@@ -229,10 +242,6 @@ input {
 		type="text" name="fname" placeholder="Fabric Name" id='field2'>
 </div>
 </div>
-
-<!-- <input type='text' id='field1' onchange="autofill()"> -->
-<!-- <input type='text' id='field2'> -->
-
 	
 <!-- Former Customer -->
 <div style="position:absolute;">	
@@ -272,14 +281,41 @@ input {
 
  
 <!-- Submit-->  
-<input id="submitcanvas" style="top:353px;left:500px;background:#0072b2;color:white;width:100px;" type="submit" value="+ Log">
+<input id="submitcanvas" style="background-color:white;top:20px;left:320px;BORDER:2px solid #0072b2;color:#0072b2;width:295px;" type="submit" value="Print">
 
 
 
 
 </form>
+
+<button type="button" style="position:absolute;top:353px;left:500px;background:#0072b2;color:white;
+							width:100px;z-index:1;padding:5px;font-size:20px;text-align:center;border-radius:15px;border:none;" onclick="myFunctiontable()">+Log</button>
+<table id="myTable" >
+  <tr>
+  </tr>
+</table>
+<br>
 </div>
 
+
+
+
+
+
+<script>
+function myFunctiontable() {
+  var table = document.getElementById("myTable");
+  var row = table.insertRow(1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  cell1.innerHTML = document.getElementById("myInput").value;
+  cell2.innerHTML = document.getElementById("field2").value;
+  cell3.innerHTML = document.getElementById("qnty").value+document.getElementById("qntp").value;
+  cell4.innerHTML = 0;
+}
+</script>
 
 
 
