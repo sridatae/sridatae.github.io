@@ -1,8 +1,9 @@
-<html>
-<head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <title>SMT Invoice</title>
-<link rel="icon" type="image/x-icon" href=".\img\SMT_favicon.png">
+<link rel="icon" type="image/x-icon" href="./img/SMT_favicon.png">
  
 <meta property="og:title" content="SMT - Invoice">
 <meta property="og:type" content="website">
@@ -154,35 +155,42 @@ input {
 }
 
 
-<!-- table, td { -->
-  <!-- border: none; -->
-  <!-- text-align:center; -->
-  <!-- background-color: #cce8ff;  -->
-<!-- }	 -->
-	
-
 table {border: none; border-collapse: collapse; width: 600px; position:absolute;left:17px;top:415px;z-index:1}
-th,td {text-align: center; padding: 6px; border: none; border-radius:10px;}
+th,td {text-align: center; padding: 6px; border: none; }
 tr:nth-child(even) {background-color: #cce8ff; color:black;}
 tr:nth-child(odd) {background-color: #0072b2;color:white;}
 
+
+#log1 {
+	position:absolute; top:353px; left:500px;
+	background:#0072b2; color:white; width:100px;
+	z-index:1;padding:5px;font-size:20px;
+	text-align:center; border-radius:15px;border:none;
+}
+
+#log2 {
+	position:absolute; top:353px; left:500px;
+	background:#0072b2; color:white; width:100px;
+	z-index:1;padding:5px;font-size:20px;
+	text-align:center; border-radius:15px;border:none;
+}
 
 </style>
 
 </head>
 
-<body>
+<body data-new-gr-c-s-check-loaded="14.1087.0" data-gr-ext-installed="">
 
 <div class="center">
 
 <!-- SMT Logo -->
-<img src=".\img\SMT1.jpg" alt="SMT" width="150px" height="auto" style="padding-top: 10px; padding-left: 10px; position:absolute;">
+<img src="./img/SMT1.jpg" alt="SMT" width="150" style="padding-top: 10px; padding-left: 10px; position:absolute;">
 
 <!-- Dropdown arrows -->
 
-<img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 911px;z-index: 1;top: 151px;">
-<img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 912px;z-index: 1;top: 200px;">
-<img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 938px;z-index: 1;top: 250px;">
+<img src="./img/arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 911px;z-index: 1;top: 151px;">
+<img src="./img/arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 912px;z-index: 1;top: 200px;">
+<img src="./img/arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 938px;z-index: 1;top: 250px;">
 
 <!-- White line splits -->
 
@@ -191,40 +199,39 @@ tr:nth-child(odd) {background-color: #0072b2;color:white;}
 <div style="position:absolute;left:930px;top:235px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
 
 
-<form action=".\src\action_page.php" autocomplete="off" method="post">
+<form action="./src/action_page.php" autocomplete="off" method="post">
 
 <!-- Date -->
-<label for="date"><p style=" position:absolute; text-align: center; left: 768px; top:55px">Date.</p></label>
-<input tabindex="-1" class="datecanvas" id="date" name="date" style="left:817px; top:66px;;"readonly="readonly">     
+<label for="date" style="position:absolute;text-align: center;left: 768px;top: 70px;">Date.</label>
+<input tabindex="-1" class="datecanvas" id="date" name="date" style="left:817px; top:66px;;" readonly="readonly">     
 
 <!-- CustomerName --> 
-<label for="cname"><p style=" position:absolute; text-align: center; left: 70px; top:129px;">Customer Name</p></label>
-<input id="maindatacanvas" style="top: 140px;left:200px;width: 325px;height:35px;padding:0px" type="text" name="cname" placeholder="Enter.">
+<label for="cname" style="position:absolute;text-align: center;left: 70px;top: 147px;">Customer Name</label>
+<input id="cname" style="position:absolute; text-align: center;border-radius:15px;top: 140px;left:200px;width: 325px;height:35px;padding:0px;" type="text" name="cname" placeholder="Enter.">
 
 <!-- Address -->   
-<label for="address"><p style="position:absolute; text-align: center; left: 130px; top:183px">Address</p></label>
-<input id="maindatacanvas" style="top: 195px;left:200px;width: 325px;padding:0px;height:35px;" type="text" name="address" placeholder="Enter.">
+<label for="address" style="position:absolute; text-align: center; left: 130px; top:200px">Address</label>
+<input id="address" style="top: 195px;left:200px;width: 325px;padding:0px;height:35px;position: absolute;border-radius:15px;text-align:center;" type="text" name="address" placeholder="Enter.">
+
 
 <!-- F.Code --> 
-
-<label for="fcode" ><p style=" position:absolute; text-align: center; left: 140px; top:238px">F.Code</p></label>
+<label for="myInput" style=" position:absolute; text-align: center; left: 140px; top:258px">F.Code</label>
 <div class="autocomplete" style="width:216px;left: 200px;top: 251px;text-align:center">
-<input  style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" 
-	   id="myInput" type="text" name="fcode" placeholder="101...">
+<input style="width:216px;border-radius:18px;text-align:center;height:33px;padding:0px;" id="myInput" type="text" name="fcode" placeholder="101...">
 </div>
-<button type="button" class="button" onclick="copytextfunc();" style="left: 415px;top: 252px;"><img src=".\img\searchbuton.png" width="28px"></button>
+<button type="button" class="button" onclick="copytextfunc();" style="left: 415px;top: 252px;"><img src="./img/searchbuton.png" alt="searchbutton" width="28"></button>
 <!-- onfocus="this.value=''" -->
+
 <!-- Quantity --> 
 <div style="position:absolute;left: 34px;">
 <div style="position:absolute;">
-<label for="qnty"> <p style=" position:absolute; text-align: center; left: 430px; top:242px">Quantity</p></label>
-<input style="position:absolute;top: 250px;left:500px;width:100px;padding:0px;height:37px;border-radius:18px;text-align:center"
-	   type="text" name="qnty" placeholder="Enter." pattern="[0-9]+" id="qnty">
+<label for="qnty" style="position:absolute;text-align: center;left: 430px;top: 256px;">Quantity</label>
+<input style="position:absolute;top: 250px;left:500px;width:100px;padding:0px;height:37px;border-radius:18px;text-align:center" type="text" name="qnty" placeholder="Enter." pattern="[0-9]+" id="qnty">
 </div>
 
 <!-- Quantity Type -->
 <div style="position:absolute;">
-<img src=".\img\arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 681px;z-index: 1;top: 265px;">
+<img src="./img/arrow3.png" alt="arrow" style="position:absolute;width:15px;left: 681px;z-index: 1;top: 265px;">
 <div style="position:absolute;left:673px;top:250px;z-index: 1;border-left: 2px solid white;height: 35px;"></div>
 <label for="qntp"></label>
 	<select name="qntp" id="qntp" style="width: 100px;top: 250px;left:605px;padding-right: 28px;height:35px">
@@ -236,25 +243,24 @@ tr:nth-child(odd) {background-color: #0072b2;color:white;}
 </div>
 <!-- Fabric Name -->
 <div style="position:absolute;">
-<label for="fname"><p style="position:absolute;text-align: center;left: 100px;top:295px;width: 100px;">Fabric Name</p></label>
+<label for="fname" style="position:absolute;text-align: center;left: 94px;top: 310px;width: 100px;">Fabric Name</label>
 <div class="maindatacanvas1">
-<input tabindex="-1" readonly="readonly" style="background:#cde0e9;width:325px;height:35px;border-radius: 15px;text-align:center" 
-		type="text" name="fname" placeholder="Fabric Name" id='field2'>
+<input tabindex="-1" readonly="readonly" style="background:#cde0e9;width:325px;height:15px;border-radius: 15px;text-align:center" type="text" name="fname" placeholder="Fabric Name" id="fname">
 </div>
 </div>
 	
 <!-- Former Customer -->
 <div style="position:absolute;">	
-<label for="prvcus" <p style="position:absolute;text-align: center;left: 731px;top:143px;width: 100px;">Former Cus.</p></label>
+<label for="prvcus" style="position:absolute;text-align: center;left: 731px;top:143px;width: 100px;">Former Cus.</label>
 	<select name="prvcus" id="prvcus" style="width:100px;text-align:center;left:835px;height:35px;top:137px;padding-right:28px;">
-		<option value="No" >No</option>
+		<option value="No">No</option>
 		<option value="Yes">Yes</option>
 	</select>
 </div>
 
 <!-- Salesperson-->
 <div style="position:absolute;">
-<label for="slrp"> <p style="position:absolute; text-align: center; left: 740px; top:175px;">Salesperson</p></label>
+<label for="slrp" style="position:absolute;text-align: center;left: 740px;top: 190px;">Salesperson</label>
 	<select name="slrp" id="slrp" style="position:absolute;width: 100px;text-align: center;left: 835px;height:35px;top:185px;padding-right: 25px;">
 		<option value="Raju">Raju</option>
 		<option value="Akhila">Akhila</option>
@@ -265,7 +271,7 @@ tr:nth-child(odd) {background-color: #0072b2;color:white;}
 
 <!-- P. Mode-->	
 <div style="position:absolute;">
-<label for="pmd" ><p style="position:absolute;text-align:center;left:758px;top:226px;width:70px;">P. Mode</p></label>
+<label for="pmd" style="position:absolute;text-align:center;left:758px;top: 240px;width:70px;">P. Mode</label>
 	<select name="pmd" id="pmd" style="position:absolute;width: 128px;text-align: center;left: 835px;height:35px;top:235px;padding-right:30px;">
 		<option value="Credit Card">Credit Card</option>
 		<option value="Debit Card">Debit Card</option>
@@ -275,48 +281,147 @@ tr:nth-child(odd) {background-color: #0072b2;color:white;}
 	</select>
  </div>
 <!-- Invoice Sequence No.-->	
-<label for="invsq"><p style="position:absolute;text-align:center;left:713px;top:15px;width:100px;">Invoice No.</p></label>
-<input tabindex="-1" class="invoicecanvas" id="invoiceseq" name="invsq" style=" left:817px;top:27px;" readonly="readonly";>  
-<button type="button" class="button" onclick="myFunction();" style="left:887px;top:25px;"><img src=".\img\newinvoice.png" width="30px"></button>
+<label for="invoiceseq" style="position:absolute;text-align:center;left:713px;top: 27px;width:100px;">Invoice No.</label>
+<input tabindex="-1" class="invoicecanvas" id="invoiceseq" name="invsq" style=" left:817px;top:27px;" readonly="readonly">  
+<button type="button" class="button" onclick="myFunction();" style="left:887px;top:25px;"><img src="./img/newinvoice.png" alt="invoicebutton" width="30" style="
+    position: absolute;
+    left: 18px;
+"></button>
+
+ 
 
  
 <!-- Submit-->  
 <input id="submitcanvas" style="background-color:white;top:20px;left:320px;BORDER:2px solid #0072b2;color:#0072b2;width:295px;" name="submit" type="submit" value="Print">
 
 
-
-
 </form>
 
-<button type="button" style="position:absolute;top:353px;left:500px;background:#0072b2;color:white;
-							width:100px;z-index:1;padding:5px;font-size:20px;text-align:center;border-radius:15px;border:none;" onclick="myFunctiontable()">+Log</button>
-<table id="myTable" >
-  <tr>
-  </tr>
-</table>
-<br>
+
+<button id="log1" type="button" onclick="myFunctiontable()">+Log</button>
+
+<button id="log2" style="position:absolute;left:604px;" type="button" onclick="myFunctiontable2()">+Log2</button>
+
+
+
+
+
+<div class="allcs">				
+	<table id="allcs">
+	  <tbody><tr> </tr>
+	</tbody></table>
+</div>
+
+<div class="hfcs">							
+	<table id="hfcs">
+	  <tbody><tr> </tr>
+	</tbody></table>
 </div>
 
 
+</div> <!-- Container ends here -->
 
-
+    <p><input type="button" value="Show Table Data" onclick="showTableData()"></p>
+    <p id="info"></p>
+	<p><input type="button" value="Show Table Data" onclick="showTableData2()"></p>
+    <p id="info2"></p>
 
 
 <script>
+    function showTableData() {
+        document.getElementById('info').innerHTML = "";
+        var myTab = document.getElementById('allcs');
+
+        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+        for (i = 1; i < myTab.rows.length; i++) {
+
+            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+            var objCells = myTab.rows.item(i).cells;
+
+            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+            for (var j = 0; j < objCells.length; j++) {
+                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
+            }
+            info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
+        }
+    }
+</script>
+
+<script>
 function myFunctiontable() {
-  var table = document.getElementById("myTable");
+  var table = document.getElementById("allcs");
   var row = table.insertRow(1);
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
   var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);
+  var cell7 = row.insertCell(6);
+  var cell8 = row.insertCell(7);
+  var cell9 = row.insertCell(8);
+  var cell10 = row.insertCell(9);
   cell1.innerHTML = document.getElementById("myInput").value;
-  cell2.innerHTML = document.getElementById("field2").value;
+  cell2.innerHTML = document.getElementById("fname").value;
   cell3.innerHTML = document.getElementById("qnty").value+document.getElementById("qntp").value;
-  cell4.innerHTML = 0;
+  cell4.innerHTML = "$300";
+  cell5.innerHTML = document.getElementById("address").value;
+  cell6.innerHTML = document.getElementById("cname").value;
+  cell7.innerHTML = document.getElementById("prvcus").value;
+  cell8.innerHTML = document.getElementById("slrp").value;
+  cell9.innerHTML = document.getElementById("pmd").value;
+  cell10.innerHTML = document.getElementById("date").value;
 }
 </script>
 
+
+<script>
+    function showTableData2() {
+        document.getElementById('info2').innerHTML = "";
+        var myTab = document.getElementById('hfcs');
+
+        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+        for (i = 1; i < myTab.rows.length; i++) {
+
+            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+            var objCells = myTab.rows.item(i).cells;
+
+            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+            for (var j = 0; j < objCells.length; j++) {
+                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
+            }
+            info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
+        }
+    }
+</script>
+
+
+<script>
+function myFunctiontable2() {
+  var table = document.getElementById("hfcs");
+  var row = table.insertRow(1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  <!-- var cell5 = row.insertCell(4); -->
+  <!-- var cell6 = row.insertCell(5); -->
+  <!-- var cell7 = row.insertCell(6); -->
+  <!-- var cell8 = row.insertCell(7); -->
+  <!-- var cell9 = row.insertCell(8); -->
+  <!-- var cell10 = row.insertCell(9); -->
+  cell1.innerHTML = document.getElementById("myInput").value;
+  cell2.innerHTML = document.getElementById("fname").value;
+  cell3.innerHTML = document.getElementById("qnty").value+document.getElementById("qntp").value;
+  cell4.innerHTML = "$300";
+  <!-- cell5.innerHTML = document.getElementById("address").value; -->
+  <!-- cell6.innerHTML = document.getElementById("cname").value; -->
+  <!-- cell7.innerHTML = document.getElementById("prvcus").value; -->
+  <!-- cell8.innerHTML = document.getElementById("slrp").value; -->
+  <!-- cell9.innerHTML = document.getElementById("pmd").value; -->
+  <!-- cell10.innerHTML = document.getElementById("date").value; -->
+}
+</script>
 
 
 <script>
@@ -466,279 +571,277 @@ autocomplete(document.getElementById("myInput"), products);
    
    if(copyText.value=="100LCH")
     {
-        document.getElementById('field2').value= "Blue Star Lungi";
+        document.getElementById('fname').value= "Blue Star Lungi";
     }
 	else if (copyText.value=="101BFR") {
-		document.getElementById('field2').value= "RamRaj Romex Briefs Half";
+		document.getElementById('fname').value= "RamRaj Romex Briefs Half";
 		}
 	else if (copyText.value=="101BFS") {
-		document.getElementById('field2').value= "RamRaj Surya Briefs Half";
+		document.getElementById('fname').value= "RamRaj Surya Briefs Half";
 		}
 	else if (copyText.value=="101BFT") {
-		document.getElementById('field2').value= "RamRaj Target Briefs Half";
+		document.getElementById('fname').value= "RamRaj Target Briefs Half";
 		}
 	else if (copyText.value=="101DTB") {
-		document.getElementById('field2').value= "RamRaj Dhoti Big Border";
+		document.getElementById('fname').value= "RamRaj Dhoti Big Border";
 		}
 	else if (copyText.value=="101DTS") {
-		document.getElementById('field2').value= "RajRaj Dhoti Small Border";
+		document.getElementById('fname').value= "RajRaj Dhoti Small Border";
 		}
 	else if (copyText.value=="101LV") {
-		document.getElementById('field2').value= "RamRaj Velkro Lungi";
+		document.getElementById('fname').value= "RamRaj Velkro Lungi";
 		}
 	else if (copyText.value=="101LWHB") {
-		document.getElementById('field2').value= "RamRaj White Lungi Big";
+		document.getElementById('fname').value= "RamRaj White Lungi Big";
 		}
 	else if (copyText.value=="101LWHJ") {
-		document.getElementById('field2').value= "Ramraj White Lungi Jari";
+		document.getElementById('fname').value= "Ramraj White Lungi Jari";
 		}
 	else if (copyText.value=="101LWHS") {
-		document.getElementById('field2').value= "RamRaj White Lungi Small";
+		document.getElementById('fname').value= "RamRaj White Lungi Small";
 		}
 	else if (copyText.value=="102LCH") {
-		document.getElementById('field2').value= "Kanmani Lungi Checks";
+		document.getElementById('fname').value= "Kanmani Lungi Checks";
 		}	
 	else if (copyText.value=="102LCL") {
-		document.getElementById('field2').value= "Kanmani Lungi Color";
+		document.getElementById('fname').value= "Kanmani Lungi Color";
 		}
 	else if (copyText.value=="102LWH") {
-		document.getElementById('field2').value= "Kanmani White Lungi";
+		document.getElementById('fname').value= "Kanmani White Lungi";
 		}
 	else if (copyText.value=="103LCH") {
-		document.getElementById('field2').value= "NKT Chakra Lungi";
+		document.getElementById('fname').value= "NKT Chakra Lungi";
 		}
 	else if (copyText.value=="103LWH") {
-		document.getElementById('field2').value= "NKT White Lungi";
+		document.getElementById('fname').value= "NKT White Lungi";
 		}
 	else if (copyText.value=="104LCH") {
-		document.getElementById('field2').value= "Gold Lungi Checked";
+		document.getElementById('fname').value= "Gold Lungi Checked";
 		}
 	else if (copyText.value=="105LCH") {
-		document.getElementById('field2').value= "Bombay Dyeing Lungi Checked";
+		document.getElementById('fname').value= "Bombay Dyeing Lungi Checked";
 		}
 	else if (copyText.value=="106LCH") {
-		document.getElementById('field2').value= "Sanku Lungi Checked";
+		document.getElementById('fname').value= "Sanku Lungi Checked";
 		}
 	else if (copyText.value=="107LWH") {
-		document.getElementById('field2').value= "Kanpel White Lungi";
+		document.getElementById('fname').value= "Kanpel White Lungi";
 		}
 	else if (copyText.value=="108LWH") {
-		document.getElementById('field2').value= "Handloom White Lungi";
+		document.getElementById('fname').value= "Handloom White Lungi";
 		}
 	else if (copyText.value=="109LCMJ") {
-		document.getElementById('field2').value= "Lungi Cream Jari";
+		document.getElementById('fname').value= "Lungi Cream Jari";
 		}
 	else if (copyText.value=="110LWH") {
-		document.getElementById('field2').value= "Royal Plus White Lungi";
+		document.getElementById('fname').value= "Royal Plus White Lungi";
 		}
 	else if (copyText.value=="111LGJ") {
-		document.getElementById('field2').value= "Tulasi Lugi Ganga Jamuna";
+		document.getElementById('fname').value= "Tulasi Lugi Ganga Jamuna";
 		}
 	else if (copyText.value=="102LV") {
-		document.getElementById('field2').value= "Kanmani Velkro Lungo";
+		document.getElementById('fname').value= "Kanmani Velkro Lungo";
 		}
 	else if (copyText.value=="101PCCMJ") {
-		document.getElementById('field2').value= "RamRaj Jari Cream Pancha Jari";
+		document.getElementById('fname').value= "RamRaj Jari Cream Pancha Jari";
 		}
 	else if (copyText.value=="101PCWH") {
-		document.getElementById('field2').value= "RamRaj White Pancha";
+		document.getElementById('fname').value= "RamRaj White Pancha";
 		}
 	else if (copyText.value=="101PCGJ") {
-		document.getElementById('field2').value= "RamRaj Ganga Jamuna Pancha";
+		document.getElementById('fname').value= "RamRaj Ganga Jamuna Pancha";
 		}
 	else if (copyText.value=="103PCCL") {
-		document.getElementById('field2').value= "NKT Pancha Colors";
+		document.getElementById('fname').value= "NKT Pancha Colors";
 		}
 	else if (copyText.value=="102PCGJ") {
-		document.getElementById('field2').value= "Kanmani Ganga Jamuna Pancha";
+		document.getElementById('fname').value= "Kanmani Ganga Jamuna Pancha";
 		}
 	else if (copyText.value=="102PCGJDB") {
-		document.getElementById('field2').value= "Kanmani Ganga Jamuna Pancha Diff Border";
+		document.getElementById('fname').value= "Kanmani Ganga Jamuna Pancha Diff Border";
 		}
 	else if (copyText.value=="101PPJ") {
-		document.getElementById('field2').value= "RamRaj Pattu Pancha Jari";
+		document.getElementById('fname').value= "RamRaj Pattu Pancha Jari";
 		}
 	else if (copyText.value=="102PPJ") {
-		document.getElementById('field2').value= "Kanmani Pattu Pancha Jari";
+		document.getElementById('fname').value= "Kanmani Pattu Pancha Jari";
 		}
 	else if (copyText.value=="102PPGJ") {
-		document.getElementById('field2').value= "Kanmani Pattu PanchaGangaJamuna";
+		document.getElementById('fname').value= "Kanmani Pattu PanchaGangaJamuna";
 		}
 	else if (copyText.value=="103PPGJ") {
-		document.getElementById('field2').value= "NKT Pattu Pancha GangaJamuna";
+		document.getElementById('fname').value= "NKT Pattu Pancha GangaJamuna";
 		}
 	else if (copyText.value=="103PPGJJ") {
-		document.getElementById('field2').value= "NKT Pattu PanchaGangaJamuna Jari";
+		document.getElementById('fname').value= "NKT Pattu PanchaGangaJamuna Jari";
 		}
 	else if (copyText.value=="112DT") {
-		document.getElementById('field2').value= "Ashoka Dhoti";
+		document.getElementById('fname').value= "Ashoka Dhoti";
 		}
 	else if (copyText.value=="113DT1") {
-		document.getElementById('field2').value= "Paramsukh Dhoti 7.3";
+		document.getElementById('fname').value= "Paramsukh Dhoti 7.3";
 		}
 	else if (copyText.value=="113DT2") {
-		document.getElementById('field2').value= "Paramsukh Dhoti 8";
+		document.getElementById('fname').value= "Paramsukh Dhoti 8";
 		}
 	else if (copyText.value=="114DT") {
-		document.getElementById('field2').value= "Parasmani Dhoti";
+		document.getElementById('fname').value= "Parasmani Dhoti";
 		}
 	else if (copyText.value=="105DT") {
-		document.getElementById('field2').value= "Bombay Dyeing Dhoti";
+		document.getElementById('fname').value= "Bombay Dyeing Dhoti";
 		}
 	else if (copyText.value=="115DT") {
-		document.getElementById('field2').value= "TexLord Dhoti";
+		document.getElementById('fname').value= "TexLord Dhoti";
 		}
 	else if (copyText.value=="116DT") {
-		document.getElementById('field2').value= "Maharaj Dhoti";
+		document.getElementById('fname').value= "Maharaj Dhoti";
 		}
 	else if (copyText.value=="117DT") {
-		document.getElementById('field2').value= "LordMaster Dhoti";
+		document.getElementById('fname').value= "LordMaster Dhoti";
 		}
 	else if (copyText.value=="118DT") {
-		document.getElementById('field2').value= "GinniGold Dhoti";
+		document.getElementById('fname').value= "GinniGold Dhoti";
 		}
 	else if (copyText.value=="119DT") {
-		document.getElementById('field2').value= "Kautar Dhoti";
+		document.getElementById('fname').value= "Kautar Dhoti";
 		}
 	else if (copyText.value=="120DT") {
-		document.getElementById('field2').value= "Sunrise Dhoti";
+		document.getElementById('fname').value= "Sunrise Dhoti";
 		}
 	else if (copyText.value=="121DT") {
-		document.getElementById('field2').value= "Netaji Dhoti";
+		document.getElementById('fname').value= "Netaji Dhoti";
 		}
 	else if (copyText.value=="122DT") {
-		document.getElementById('field2').value= "Discovery Dhoti";
+		document.getElementById('fname').value= "Discovery Dhoti";
 		}
 	else if (copyText.value=="101DTS") {
-		document.getElementById('field2').value= "RajRaj Dhoti Small Border";
+		document.getElementById('fname').value= "RajRaj Dhoti Small Border";
 		}
 	else if (copyText.value=="101DTB") {
-		document.getElementById('field2').value= "RamRaj Dhoti Big Border";
+		document.getElementById('fname').value= "RamRaj Dhoti Big Border";
 		}
 	else if (copyText.value=="103TWL") {
-		document.getElementById('field2').value= "NKT Towel Lilly";
+		document.getElementById('fname').value= "NKT Towel Lilly";
 		}
 	else if (copyText.value=="103TWS") {
-		document.getElementById('field2').value= "NKT Towels Spark";
+		document.getElementById('fname').value= "NKT Towels Spark";
 		}
 	else if (copyText.value=="103TWP") {
-		document.getElementById('field2').value= "NKT Towels Polo";
+		document.getElementById('fname').value= "NKT Towels Polo";
 		}
 	else if (copyText.value=="102TWCL") {
-		document.getElementById('field2').value= "Kanmani Towels Color";
+		document.getElementById('fname').value= "Kanmani Towels Color";
 		}
 	else if (copyText.value=="102TWCH") {
-		document.getElementById('field2').value= "Kanmani Towels Checked";
+		document.getElementById('fname').value= "Kanmani Towels Checked";
 		}
 	else if (copyText.value=="102TWLN1") {
-		document.getElementById('field2').value= "Kanmani Towels Lines";
+		document.getElementById('fname').value= "Kanmani Towels Lines";
 		}
 	else if (copyText.value=="102TWB1") {
-		document.getElementById('field2').value= "Kanmani Towels Baby Printed";
+		document.getElementById('fname').value= "Kanmani Towels Baby Printed";
 		}
 	else if (copyText.value=="102TWB2") {
-		document.getElementById('field2').value= "Kanmani Towels Baby Printed Big";
+		document.getElementById('fname').value= "Kanmani Towels Baby Printed Big";
 		}
 	else if (copyText.value=="102TWLN2") {
-		document.getElementById('field2').value= "Kanmani Towels Lines Big";
+		document.getElementById('fname').value= "Kanmani Towels Lines Big";
 		}
 	else if (copyText.value=="108TW1") {
-		document.getElementById('field2').value= "Handloom Towel Small";
+		document.getElementById('fname').value= "Handloom Towel Small";
 		}
 	else if (copyText.value=="108TW2") {
-		document.getElementById('field2').value= "Handloom Towel Big";
+		document.getElementById('fname').value= "Handloom Towel Big";
 		}
 	else if (copyText.value=="108TWCH") {
-		document.getElementById('field2').value= "Handloom Towel Checked";
+		document.getElementById('fname').value= "Handloom Towel Checked";
 		}
 	else if (copyText.value=="108TWLN") {
-		document.getElementById('field2').value= "Handloom Towel Lines";
+		document.getElementById('fname').value= "Handloom Towel Lines";
 		}
 	else if (copyText.value=="101TW") {
-		document.getElementById('field2').value= "RamRaj Towels";
+		document.getElementById('fname').value= "RamRaj Towels";
 		}
 	else if (copyText.value=="123TW1") {
-		document.getElementById('field2').value= "VVJ Towels Regular";
+		document.getElementById('fname').value= "VVJ Towels Regular";
 		}
 	else if (copyText.value=="123TW2") {
-		document.getElementById('field2').value= "VVJ Towels Large";
+		document.getElementById('fname').value= "VVJ Towels Large";
 		}
 	else if (copyText.value=="124TW") {
-		document.getElementById('field2').value= "Ayyappa Towels";
+		document.getElementById('fname').value= "Ayyappa Towels";
 		}
 	else if (copyText.value=="125TW") {
-		document.getElementById('field2').value= "Royal King Towels";
+		document.getElementById('fname').value= "Royal King Towels";
 		}
 	else if (copyText.value=="126TW") {
-		document.getElementById('field2').value= "Turkey Towels";
+		document.getElementById('fname').value= "Turkey Towels";
 		}
 	else if (copyText.value=="126TW3") {
-		document.getElementById('field2').value= "Turkey Towels Baby";
+		document.getElementById('fname').value= "Turkey Towels Baby";
 		}
 	else if (copyText.value=="103TWWH1") {
-		document.getElementById('field2').value= "NKT Towels White";
+		document.getElementById('fname').value= "NKT Towels White";
 		}
 	else if (copyText.value=="103TWWH2") {
-		document.getElementById('field2').value= "NKT Towels White Thread";
+		document.getElementById('fname').value= "NKT Towels White Thread";
 		}
 	else if (copyText.value=="103TWWH3") {
-		document.getElementById('field2').value= "NKT Towels White Jari";
+		document.getElementById('fname').value= "NKT Towels White Jari";
 		}
 	else if (copyText.value=="127TW") {
-		document.getElementById('field2').value= "Bheem Towels";
+		document.getElementById('fname').value= "Bheem Towels";
 		}
 	else if (copyText.value=="101VT") {
-		document.getElementById('field2').value= "RamRaj Vests";
+		document.getElementById('fname').value= "RamRaj Vests";
 		}
 	else if (copyText.value=="128VTCD") {
-		document.getElementById('field2').value= "Essa Vests Cold";
+		document.getElementById('fname').value= "Essa Vests Cold";
 		}
 	else if (copyText.value=="129VT") {
-		document.getElementById('field2').value= "OXO Vests";
+		document.getElementById('fname').value= "OXO Vests";
 		}
 	else if (copyText.value=="130VT") {
-		document.getElementById('field2').value= "Jockey Vests";
+		document.getElementById('fname').value= "Jockey Vests";
 		}
 	else if (copyText.value=="131VT") {
-		document.getElementById('field2').value= "Vilan Vests";
+		document.getElementById('fname').value= "Vilan Vests";
 		}
 	else if (copyText.value=="128VTCM") {
-		document.getElementById('field2').value= "Essa Cam Vests";
+		document.getElementById('fname').value= "Essa Cam Vests";
 		}
 	else if (copyText.value=="129BF") {
-		document.getElementById('field2').value= "Oxo Briefs Full";
+		document.getElementById('fname').value= "Oxo Briefs Full";
 		}
 	else if (copyText.value=="128BFT") {
-		document.getElementById('field2').value= "Essa Briefs Trend Full";
+		document.getElementById('fname').value= "Essa Briefs Trend Full";
 		}
 	else if (copyText.value=="129BFC") {
-		document.getElementById('field2').value= "Essa Briefs Classic Half";
+		document.getElementById('fname').value= "Essa Briefs Classic Half";
 		}
 	else if (copyText.value=="131BF1") {
-		document.getElementById('field2').value= "Vilan Briefs Full";
+		document.getElementById('fname').value= "Vilan Briefs Full";
 		}
 	else if (copyText.value=="131BF2") {
-		document.getElementById('field2').value= "Vilan Briefs Half";
+		document.getElementById('fname').value= "Vilan Briefs Half";
 		}
 	else if (copyText.value=="130BFE1") {
-		document.getElementById('field2').value= "Jockey Elance Full";
+		document.getElementById('fname').value= "Jockey Elance Full";
 		}
 	else if (copyText.value=="130BFE2") {
-		document.getElementById('field2').value= "Jockey Elance Half";
+		document.getElementById('fname').value= "Jockey Elance Half";
 		}
 	else if (copyText.value=="130BFP1") {
-		document.getElementById('field2').value= "Jockey Pop Color Full";
+		document.getElementById('fname').value= "Jockey Pop Color Full";
 		}
 	else if (copyText.value=="130BFP2") {
-		document.getElementById('field2').value= "Jockey Pop Color Half";
+		document.getElementById('fname').value= "Jockey Pop Color Half";
 		}
 	else {
-		document.getElementById('field2').value= "Item Not Found";
+		document.getElementById('fname').value= "Item Not Found";
 		}
  }
 </script>
-
-
 
 
 </body></html>
