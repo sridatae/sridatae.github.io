@@ -280,6 +280,7 @@ tr:nth-child(odd) {background-color: #0072b2;color:white;}
 		<option value="Bank Transfer">Bank Transfer</option>
 	</select>
  </div>
+ 
 <!-- Invoice Sequence No.-->	
 <label for="invoiceseq" style="position:absolute;text-align:center;left:713px;top: 27px;width:100px;">Invoice No.</label>
 <input tabindex="-1" class="invoicecanvas" id="invoiceseq" name="invsq" style=" left:817px;top:27px;" readonly="readonly">  
@@ -287,6 +288,10 @@ tr:nth-child(odd) {background-color: #0072b2;color:white;}
     position: absolute;
     left: 18px;
 "></button>
+
+<label for="info22"></label>
+<textarea style="position:absolute;top:55px;" id="info22" name="info22" readonly="readonly" hidden></textarea><!-- <p id ="info"></p> -->
+
 
  
 
@@ -321,79 +326,50 @@ tr:nth-child(odd) {background-color: #0072b2;color:white;}
 
 </div> <!-- Container ends here -->
 
-    <p><input type="button" value="Show Table Data" onclick="showTableData()"></p>
-    <p id="info"></p>
-	<p><input type="button" value="Show Table Data" onclick="showTableData2()"></p>
-    <p id="info2"></p>
 
-
-<script>
-    function showTableData() {
-        document.getElementById('info').innerHTML = "";
-        var myTab = document.getElementById('allcs');
-
-        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-        for (i = 1; i < myTab.rows.length; i++) {
-
-            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
-            var objCells = myTab.rows.item(i).cells;
-
-            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
-            for (var j = 0; j < objCells.length; j++) {
-                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
-            }
-            info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
-        }
-    }
-</script>
 
 <script>
 function myFunctiontable() {
   var table = document.getElementById("allcs");
   var row = table.insertRow(1);
   var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
-  var cell4 = row.insertCell(3);
-  var cell5 = row.insertCell(4);
-  var cell6 = row.insertCell(5);
-  var cell7 = row.insertCell(6);
-  var cell8 = row.insertCell(7);
-  var cell9 = row.insertCell(8);
-  var cell10 = row.insertCell(9);
-  cell1.innerHTML = document.getElementById("myInput").value;
-  cell2.innerHTML = document.getElementById("fname").value;
-  cell3.innerHTML = document.getElementById("qnty").value+document.getElementById("qntp").value;
-  cell4.innerHTML = "$300";
-  cell5.innerHTML = document.getElementById("address").value;
-  cell6.innerHTML = document.getElementById("cname").value;
-  cell7.innerHTML = document.getElementById("prvcus").value;
-  cell8.innerHTML = document.getElementById("slrp").value;
-  cell9.innerHTML = document.getElementById("pmd").value;
-  cell10.innerHTML = document.getElementById("date").value;
+  cell1.innerHTML = document.getElementById("myInput").value+"|"+document.getElementById("fname").value+"|"+document.getElementById("qnty").value+document.getElementById("qntp").value+"|"+"$300"+"|"+document.getElementById("address").value+"|"+document.getElementById("cname").value+"|"+document.getElementById("prvcus").value+"|"+document.getElementById("slrp").value+"|"+document.getElementById("pmd").value+"|"+document.getElementById("date").value;
+  const textarea = document.getElementById('info22')
+  textarea.value += cell1.innerHTML+"\n";
+  <!-- document.getElementById('info22').innerHTML = cell1.innerHTML; -->
 }
 </script>
 
 
-<script>
-    function showTableData2() {
-        document.getElementById('info2').innerHTML = "";
-        var myTab = document.getElementById('hfcs');
 
-        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
-        for (i = 1; i < myTab.rows.length; i++) {
 
-            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
-            var objCells = myTab.rows.item(i).cells;
 
-            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
-            for (var j = 0; j < objCells.length; j++) {
-                info.innerHTML = info.innerHTML + ' ' + objCells.item(j).innerHTML;
-            }
-            info.innerHTML = info.innerHTML + '<br />';     // ADD A BREAK (TAG).
-        }
-    }
-</script>
+<!-- <script> -->
+<!-- function myFunctiontable() { -->
+  <!-- var table = document.getElementById("allcs"); -->
+  <!-- var row = table.insertRow(1); -->
+  <!-- var cell1 = row.insertCell(0); -->
+  <!-- var cell2 = row.insertCell(1); -->
+  <!-- var cell3 = row.insertCell(2); -->
+  <!-- var cell4 = row.insertCell(3); -->
+  <!-- var cell5 = row.insertCell(4); -->
+  <!-- var cell6 = row.insertCell(5); -->
+  <!-- var cell7 = row.insertCell(6); -->
+  <!-- var cell8 = row.insertCell(7); -->
+  <!-- var cell9 = row.insertCell(8); -->
+  <!-- var cell10 = row.insertCell(9); -->
+  <!-- cell1.innerHTML = document.getElementById("myInput").value; -->
+  <!-- cell2.innerHTML = document.getElementById("fname").value; -->
+  <!-- cell3.innerHTML = document.getElementById("qnty").value+document.getElementById("qntp").value; -->
+  <!-- cell4.innerHTML = "$300"; -->
+  <!-- cell5.innerHTML = document.getElementById("address").value; -->
+  <!-- cell6.innerHTML = document.getElementById("cname").value; -->
+  <!-- cell7.innerHTML = document.getElementById("prvcus").value; -->
+  <!-- cell8.innerHTML = document.getElementById("slrp").value; -->
+  <!-- cell9.innerHTML = document.getElementById("pmd").value; -->
+  <!-- cell10.innerHTML = document.getElementById("date").value; -->
+<!-- } -->
+<!-- </script> -->
 
 
 <script>
