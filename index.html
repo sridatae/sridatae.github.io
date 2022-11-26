@@ -290,7 +290,7 @@ tr:nth-child(odd) {background-color: #0072b2;color:white;}
 "></button>
 
 <label for="info22"></label>
-<textarea style="position:absolute;top:55px;" id="info22" name="info22" readonly="readonly" hidden></textarea><!-- <p id ="info"></p> -->
+<textarea style="position: absolute; top: 583px; height: 137px; width: 979px;" id="info22" name="info22" readonly="readonly" hidden></textarea>
 
 
  
@@ -305,23 +305,21 @@ tr:nth-child(odd) {background-color: #0072b2;color:white;}
 
 <button id="log1" type="button" onclick="myFunctiontable()">+Log</button>
 
-<button id="log2" style="position:absolute;left:604px;" type="button" onclick="myFunctiontable2()">+Log2</button>
-
-
-
-
-
-<div class="allcs">				
-	<table id="allcs">
-	  <tbody><tr> </tr>
-	</tbody></table>
-</div>
 
 <div class="hfcs">							
 	<table id="hfcs">
 	  <tbody><tr> </tr>
 	</tbody></table>
 </div>
+
+
+<div class="allcs" hidden>				
+	<table id="allcs" >
+	  <tbody><tr> </tr>
+	</tbody></table>
+</div>
+
+
 
 
 </div> <!-- Container ends here -->
@@ -333,71 +331,24 @@ function myFunctiontable() {
   var table = document.getElementById("allcs");
   var row = table.insertRow(1);
   var cell1 = row.insertCell(0);
-  cell1.innerHTML = document.getElementById("myInput").value+"|"+document.getElementById("fname").value+"|"+document.getElementById("qnty").value+document.getElementById("qntp").value+"|"+"$300"+"|"+document.getElementById("address").value+"|"+document.getElementById("cname").value+"|"+document.getElementById("prvcus").value+"|"+document.getElementById("slrp").value+"|"+document.getElementById("pmd").value+"|"+document.getElementById("date").value;
+  cell1.innerHTML = document.getElementById("invoiceseq").value+"|"+document.getElementById("myInput").value+"|"+document.getElementById("fname").value+"|"+document.getElementById("qnty").value+document.getElementById("qntp").value+"|"+"$300"+"|"+document.getElementById("address").value+"|"+document.getElementById("cname").value+"|"+document.getElementById("prvcus").value+"|"+document.getElementById("slrp").value+"|"+document.getElementById("pmd").value+"|"+document.getElementById("date").value;
   const textarea = document.getElementById('info22')
   textarea.value += cell1.innerHTML+"\n";
-  <!-- document.getElementById('info22').innerHTML = cell1.innerHTML; -->
+  
+  var tablehfcs = document.getElementById("hfcs");
+  var rowhfcs = tablehfcs.insertRow(1);
+  var cell1hfcs = rowhfcs.insertCell(0);
+  var cell2hfcs = rowhfcs.insertCell(1);
+  var cell3hfcs = rowhfcs.insertCell(2);
+  var cell4hfcs = rowhfcs.insertCell(3);
+  cell1hfcs.innerHTML = document.getElementById("myInput").value;
+  cell2hfcs.innerHTML = document.getElementById("fname").value;
+  cell3hfcs.innerHTML = document.getElementById("qnty").value+document.getElementById("qntp").value;
+  cell4hfcs.innerHTML = "$300";
+  
 }
 </script>
 
-
-
-
-
-<!-- <script> -->
-<!-- function myFunctiontable() { -->
-  <!-- var table = document.getElementById("allcs"); -->
-  <!-- var row = table.insertRow(1); -->
-  <!-- var cell1 = row.insertCell(0); -->
-  <!-- var cell2 = row.insertCell(1); -->
-  <!-- var cell3 = row.insertCell(2); -->
-  <!-- var cell4 = row.insertCell(3); -->
-  <!-- var cell5 = row.insertCell(4); -->
-  <!-- var cell6 = row.insertCell(5); -->
-  <!-- var cell7 = row.insertCell(6); -->
-  <!-- var cell8 = row.insertCell(7); -->
-  <!-- var cell9 = row.insertCell(8); -->
-  <!-- var cell10 = row.insertCell(9); -->
-  <!-- cell1.innerHTML = document.getElementById("myInput").value; -->
-  <!-- cell2.innerHTML = document.getElementById("fname").value; -->
-  <!-- cell3.innerHTML = document.getElementById("qnty").value+document.getElementById("qntp").value; -->
-  <!-- cell4.innerHTML = "$300"; -->
-  <!-- cell5.innerHTML = document.getElementById("address").value; -->
-  <!-- cell6.innerHTML = document.getElementById("cname").value; -->
-  <!-- cell7.innerHTML = document.getElementById("prvcus").value; -->
-  <!-- cell8.innerHTML = document.getElementById("slrp").value; -->
-  <!-- cell9.innerHTML = document.getElementById("pmd").value; -->
-  <!-- cell10.innerHTML = document.getElementById("date").value; -->
-<!-- } -->
-<!-- </script> -->
-
-
-<script>
-function myFunctiontable2() {
-  var table = document.getElementById("hfcs");
-  var row = table.insertRow(1);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
-  var cell3 = row.insertCell(2);
-  var cell4 = row.insertCell(3);
-  <!-- var cell5 = row.insertCell(4); -->
-  <!-- var cell6 = row.insertCell(5); -->
-  <!-- var cell7 = row.insertCell(6); -->
-  <!-- var cell8 = row.insertCell(7); -->
-  <!-- var cell9 = row.insertCell(8); -->
-  <!-- var cell10 = row.insertCell(9); -->
-  cell1.innerHTML = document.getElementById("myInput").value;
-  cell2.innerHTML = document.getElementById("fname").value;
-  cell3.innerHTML = document.getElementById("qnty").value+document.getElementById("qntp").value;
-  cell4.innerHTML = "$300";
-  <!-- cell5.innerHTML = document.getElementById("address").value; -->
-  <!-- cell6.innerHTML = document.getElementById("cname").value; -->
-  <!-- cell7.innerHTML = document.getElementById("prvcus").value; -->
-  <!-- cell8.innerHTML = document.getElementById("slrp").value; -->
-  <!-- cell9.innerHTML = document.getElementById("pmd").value; -->
-  <!-- cell10.innerHTML = document.getElementById("date").value; -->
-}
-</script>
 
 
 <script>
