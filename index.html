@@ -146,7 +146,8 @@
         position: absolute;
         left: 17px;
         top: 415px;
-        z-index: 1
+        z-index: 1;
+		table-layout:fixed;word-wrap:break-word;
       }
       th,
       td {
@@ -163,20 +164,6 @@
         color: white;
       }
       #log1 {
-        position: absolute;
-        top: 353px;
-        left: 500px;
-        background: #0072b2;
-        color: white;
-        width: 100px;
-        z-index: 1;
-        padding: 5px;
-        font-size: 20px;
-        text-align: center;
-        border-radius: 15px;
-        border: none;
-      }
-      #log2 {
         position: absolute;
         top: 353px;
         left: 500px;
@@ -295,26 +282,40 @@
         <!-- Invoice Sequence No.-->
         <label for="invoiceseq" style="position:absolute;text-align:center;left:713px;top: 27px;width:100px;">Invoice No.</label>
         <input tabindex="-1" class="invoicecanvas" id="invoiceseq" name="invsq" style=" left:817px;top:27px;" readonly="readonly">
-        <button type="button" class="button" onclick="myFunction();" style="left:887px;top:25px;"><img src="./img/newinvoice.png" alt="invoicebutton" width="30" style="
-    position: absolute;
-    left: 18px;
-"></button>
+        <button type="button" class="button" onclick="myFunction();" style="left:887px;top:25px;"><img src="./img/newinvoice.png" alt="invoicebutton" width="30" style=" position: absolute; left: 18px;"></button>
+
+		<!-- Text Area that captures all data table-->
         <label for="info22"></label>
         <div class="bro">
           <textarea style="position: absolute; top: 583px; height: 137px; width: 979px;" id="info22" name="info22" readonly="readonly" hidden></textarea>
         </div>
 
-        <!-- Submit-->
+		<!-- Price -->
+        <div style="position:absolute;">
+          <label for="price"></label>
+            <input readonly="readonly" type="text" name="Price" id="price" hidden>
+        </div>
+
+
+
+        <!-- Submit button sends data to backend process-->
         <input id="submitcanvas" style="background-color:white;top:20px;left:320px;BORDER:2px solid #0072b2;color:#0072b2;width:295px;" name="submit" type="submit" value="Print">
       </form>
+	  
+	  <!-- Log Button to generate the table-->
       <button id="log1" type="button" onclick="myFunctiontable()">+Log</button>
-      <div class="hfcs">
+      
+	  <!-- Visible table on webpage with half the data-->
+	  <div class="hfcs">
         <table id="hfcs">
           <tbody>
             <tr> </tr>
           </tbody>
         </table>
       </div>
+	    <span id="val"  style=" position: absolute; top: 700px;"></span>
+	  
+	  <!-- Hidden table with all data to be routed to DB-->
       <div class="allcs" hidden>
         <table id="allcs">
           <tbody>
@@ -322,47 +323,63 @@
           </tbody>
         </table>
       </div>
-    </div>
- <!-- Container ends here -->
+    </div> <!-- Container ends here -->
+	
+	
+	<!--Create Table of the input data provided -->
     <script>
       function myFunctiontable() {
         var table = document.getElementById("allcs");
-        var row = table.insertRow(1);
+        var row = table.insertRow(-1);
         var cell1 = row.insertCell(0);
         cell1.innerHTML = document.getElementById("invoiceseq").value + "|" + document.getElementById("myInput").value + "|" + document.getElementById("fname").value + "|" + document.getElementById("qnty").value + document.getElementById("qntp").value + "|" + "$300" + "|" + document.getElementById("address").value + "|" + document.getElementById("cname").value + "|" + document.getElementById("prvcus").value + "|" + document.getElementById("slrp").value + "|" + document.getElementById("pmd").value + "|" + document.getElementById("date").value;
         const textarea = document.getElementById('info22')
         textarea.value += cell1.innerHTML + "\n";
         var tablehfcs = document.getElementById("hfcs");
-        var rowhfcs = tablehfcs.insertRow(1);
+        var rowhfcs = tablehfcs.insertRow(-1);
         var cell1hfcs = rowhfcs.insertCell(0);
         var cell2hfcs = rowhfcs.insertCell(1);
         var cell3hfcs = rowhfcs.insertCell(2);
         var cell4hfcs = rowhfcs.insertCell(3);
+		var cell5hfcs = rowhfcs.insertCell(4);
         cell1hfcs.innerHTML = document.getElementById("myInput").value;
         cell2hfcs.innerHTML = document.getElementById("fname").value;
         cell3hfcs.innerHTML = document.getElementById("qnty").value + document.getElementById("qntp").value;
-        cell4hfcs.innerHTML = "$300";
+        cell4hfcs.innerHTML = document.getElementById("price").value;
+		cell5hfcs.innerHTML = '<button type="button" value="delete" style="padding:0px;background-color:transparent;border:none;" onclick="deleteRow(this)"><img src="./img/delete.png" alt="deletebutton" width="25"></button>';
       }
     </script>
+	
+	<!-- Delete button -->
+	<script>
+	function deleteRow(ele){
+      var table = document.getElementById('hfcs');
+      var rowCount = table.rows.length;
+      if(rowCount <= 1){
+        alert("There is no row available to delete!");
+        return;
+      }
+      if(ele){
+        //delete specific row
+        ele.parentNode.parentNode.remove();
+      }
+      else{
+        //delete last row
+        table.deleteRow(rowCount-1);
+      }
+    }
+	</script>
+	
+	
+	
+	<!-- Today's Date Function -->
     <script>
-
-      <!-- Today's Date Function 
-      -->
-      currentdate
-      =
-      new
-      Date().toLocaleDateString('en-us',
-      {
-        year: "numeric",
-      month: "long",
-      day: "numeric"
-      })
+      currentdate = new Date().toLocaleDateString('en-us', { year: "numeric", month: "long", day: "numeric" })
       document.getElementById("date").value = currentdate;
     </script>
-    <script>
-
-      <!-- Invoice Squencer
-      -->
+    
+    <!-- Invoice Squencer-->
+	<script>
       var
       seq = 0;
       function
@@ -374,6 +391,8 @@
       seq;
       }
     </script>
+	
+    <!-- F.code Searchable Dropdown-->	
     <script>
       function autocomplete(inp, arr) {
         /*the autocomplete function takes two arguments,
@@ -487,6 +506,8 @@
       /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
       autocomplete(document.getElementById("myInput"), products);
     </script>
+	
+    <!-- F.Name Based on F.Code -->	
     <script>
       function copytextfunc() {
         /* Get the text field */
@@ -496,17 +517,20 @@
         /* Copy the text inside the text field */
         document.execCommand("Copy");
         /* Alert the copied text */
-        <
-        !--alert("Copied the text: " + copyText.value);
-        -- >
+        /* alert("Copied the text: " + copyText.value);*/
+
         if (copyText.value == "100LCH") {
           document.getElementById('fname').value = "Blue Star Lungi";
+		  document.getElementById("price").value = 200;
         } else if (copyText.value == "101BFR") {
           document.getElementById('fname').value = "RamRaj Romex Briefs Half";
+		  document.getElementById("price").value = 100;
         } else if (copyText.value == "101BFS") {
           document.getElementById('fname').value = "RamRaj Surya Briefs Half";
+		  document.getElementById("price").value = 700;
         } else if (copyText.value == "101BFT") {
           document.getElementById('fname').value = "RamRaj Target Briefs Half";
+		  document.getElementById("price").value = 1200;
         } else if (copyText.value == "101DTB") {
           document.getElementById('fname').value = "RamRaj Dhoti Big Border";
         } else if (copyText.value == "101DTS") {
@@ -679,8 +703,19 @@
           document.getElementById('fname').value = "Jockey Pop Color Half";
         } else {
           document.getElementById('fname').value = "Item Not Found";
+		  document.getElementById("price").value = 0;
         }
       }
     </script>
+	<script>
+        var table = document.getElementById("hfcs"), sumVal = 0;
+        for(var i = 1; i < table.rows.length; i++)
+          {
+            sumVal = sumVal + parseInt(table.rows[i].cells[3].innerHTML);
+           }
+           document.getElementById("val").innerHTML = "Sum Value = " + sumVal;
+           console.log(sumVal);
+            
+        </script>
   </body>
 </html>

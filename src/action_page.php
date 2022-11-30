@@ -17,7 +17,7 @@ $fieldL = $_POST["info22"];
 // $list = array([$fieldA,$fieldB,$fieldC,$fieldD,$fieldE,$fieldF,$fieldG,$fieldH,$fieldI,$fieldJ,$fieldK,$fieldL]); //THIS IS WHERE YOU PUT THE FORM ELEMENTS ex: array('$fieldA','$fieldB',etc)
 $list= array([$fieldL]);
 // Open a file in write mode ('a')
-$fp = fopen('persons.csv', 'a');
+$fp = fopen('persons.csv', 'w');
 
 // Loop through file pointer and a line
 foreach ($list as $fields) {
