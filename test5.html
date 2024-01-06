@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMT Invoice</title>
+    <link rel="icon" type="image/x-icon" href="./img/SMT_favicon.png">
+    <meta property="og:title" content="SMT - Invoice">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sridatae.github.io/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/sridatae/sridatae.github.io/main/img/SMT_favicon.png">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            margin-top: 7%;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #fff;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        #invoice-form {
+            max-width: 30%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.88);
+            position: relative;
+        }
+
+        .label {
+            margin-right: 10px;
+            margin-bottom: 5px;
+            color: #555;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .capture-data-btn,
+        .print-btn,
+        .cancel-btn,
+        .total-btn {
+            padding: 10px;
+            border-radius: 99999px;
+            cursor: pointer;
+            margin-top: 20px;
+            background-color: #1475bc;
+            color: #fff;
+            border: none;
+        }
+
+        .capture-data-btn:hover,
+        .print-btn:hover,
+        .cancel-btn:hover,
+        .total-btn:hover {
+            background-color: #21aae1;
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            flex-wrap: wrap;
+        }
+
+        .input-field,
+        .select-field,
+        .product-field {
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: #21aae1;
+            color: #fff;
+            border: none;
+            border-radius: 999999px;
+            font-size: 14px;
+            width: 70%;
+        }
+
+        .input-field::placeholder,
+        .select-field option,
+        .product-field::placeholder {
+            color: #fff;
+        }
+
+        .input-field:focus,
+        .select-field:focus,
+        .product-field:focus {
+            font-size: 16px;
+        }
+
+        .ui-autocomplete {
+            max-height: 40%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: #21aae1 #ddd;
+        }
+
+        .ui-menu-item {
+            padding: 10px;
+            background-color: #21aae1;
+            color: #fff;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+
+        .ui-menu-item:last-child {
+            border-bottom: none;
+        }
+
+        #details-table {
+            margin-left: 2%;
+            display: none;
+            max-width: 60%;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.88);
+            border-radius: 20px;
+            background-color: #f4f4f4;
+        }
+
+        #details-table th,
+        #details-table td {
+            border: 1px solid transparent;
+            padding: 8px;
+            text-align: center;
+            border-radius: 15px;
+            font-size: 15px;
+        }
+
+        #details-table th {
+            background-color: #1475bc;
+            color: #fff;
+        }
+
+        #details-table tr {
+            box-shadow: 0 2px 0 0 #1475bc;
+            border-radius: 20px;
+        }
+
+        .img1 img {
+            width: 20%;
+            padding-top: 10px;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body #invoice-form {
+                max-width: 80%;
+            }
+
+            .input-field,
+            .select-field,
+            .product-field {
+                box-sizing: border-box;
+                padding: 10px;
+                background-color: #21aae1;
+                color: #fff;
+                border: none;
+                border-radius: 999999px;
+                font-size: 14px;
+                width: 65%;
+            }
+
+            .img1 img {
+                width: 30%;
+                padding-top: 10px;
+                padding-left: 10px;
+                position: relative;
+            }
+        }
+    </style>
+
+</head>
+<body>
+  <form id="invoice-form" action="./process_form.php" method="post">
+      <div class="img1">
+          <img src="./img/SMT1.png" alt="SMT">
+      </div>
+
+      <div class="form-group">
+          <label for="current-date"><strong>Date</strong></label>
+          <input type="text" class="input-field" name="current-date" id="current-date" readonly>
+      </div>
+
+      <div class="form-group">
+          <label for="invoice-number"><strong>Invoice No.</strong></label>
+          <input type="text" class="input-field" name="invoice-number" id="invoice-number" readonly>
+      </div>
+
+      <div class="form-group">
+          <label for="customer-name"><strong>Client Name:</strong></label>
+          <input type="text" class="input-field" name="customer-name" id="customer-name" placeholder="Enter customer name">
+      </div>
+
+      <div class="form-group">
+          <label for="locality"><strong>Locality:</strong></label>
+          <input type="text" class="input-field" name="locality" id="locality" placeholder="Enter locality">
+      </div>
+
+      <div class="form-group">
+          <label for="product"><strong>Product</strong></label>
+          <input type="text" class="product-field" name="product" id="product" placeholder="Enter product">
+      </div>
+
+      <div class="form-group">
+          <label for="quantity"><strong>Quantity</strong></label>
+          <input type="text" class="input-field" name="quantity" id="quantity" placeholder="Enter quantity">
+      </div>
+
+      <div class="form-group">
+          <label for="price"><strong>Price</strong></label>
+          <input type="text" class="input-field" name="price" id="price" placeholder="Price" readonly>
+      </div>
+
+      <input type="hidden" name="formattedTotal" id="formattedTotal">
+      <input type="hidden" name="discountValuefield" id="discountValuefield">
+      <input type="hidden" name="totalamount" id="totalamount">
+
+      <div class="form-group">
+          <label for="former-customer"><strong>Ex-Shopper</strong></label>
+          <select class="select-field" name="former-customer" id="former-customer">
+              <option value="-">Select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+          </select>
+      </div>
+
+      <div class="form-group">
+          <label for="sales-person"><strong>Salesperson</strong></label>
+          <select class="select-field" name="sales-person" id="sales-person">
+              <option value="-">Select</option>
+              <option value="john_doe">John Doe</option>
+              <option value="jane_doe">Jane Doe</option>
+          </select>
+      </div>
+
+      <div class="form-group">
+          <label for="payment-method"><strong>Payment</strong></label>
+          <select class="select-field" name="payment-method" id="payment-method">
+              <option value="credit_card">Credit Card</option>
+              <option value="paypal">PayPal</option>
+              <option value="bank_transfer">Bank Transfer</option>
+          </select>
+      </div>
+
+      <button class="capture-data-btn" id="capture-data-btn">Capture Data</button>
+      <button class="total-btn" id="total-btn">Total</button>
+      <button class="print-btn" id="print-btn">Print</button>
+      <button class="cancel-btn" id="cancel-btn">Cancel</button>
+
+  </form>
+
+  <table id="details-table" width="30%">
+      <thead>
+          <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Subtotal</th>
+          </tr>
+      </thead>
+      <tbody id="details-table-body"></tbody>
+  </table>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+<script>
+function updateCurrentDate() {
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleString();
+  document.getElementById('current-date').value = formattedDate;
+}
+
+function generateRandomInvoiceNumber() {
+  const randomInvoiceNumber = String(Math.floor(Math.random() * 10000000)).padStart(7, '0');
+  document.getElementById('invoice-number').value = randomInvoiceNumber;
+}
+
+function appendToDetailsTable(data) {
+    const tableBody = document.getElementById('details-table-body');
+    const newRow = tableBody.insertRow(-1);
+
+    Object.values(data).forEach(value => {
+        const cell = newRow.insertCell();
+        cell.textContent = value;
+    });
+}
+
+function removeLastRow() {
+    const tableBody = document.getElementById('details-table-body');
+    const rowCount = tableBody.rows.length;
+
+    if (rowCount > 0) {
+        // Remove the last row
+        tableBody.deleteRow(rowCount - 1);
+    }
+}
+
+function formatToRupees(amount) {
+    return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(amount);
+}
+
+// JavaScript
+const products = ["Cotton", "Wool", "Sweater", "Shirt", "Jeans", "Jacket", "Hat", "Shoes", "Socks", "Tie", "Scarf"];
+
+const productPrices = {
+  "Cotton": 10.00,
+  "Wool": 15.00,
+  "Sweater": 25.00,
+  "Shirt": 20.00,
+  "Jeans": 30.00,
+  "Jacket": 35.00,
+  "Hat": 12.00,
+  "Shoes": 40.00,
+  "Socks": 5.00,
+  "Tie": 18.00,
+  "Scarf": 22.00
+};
+
+function initializeProductAutocomplete(selector) {
+  $(selector).autocomplete({
+    source: function (request, response) {
+      const matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+      const matchedProducts = $.grep(products, function (item) {
+        return matcher.test(item);
+      });
+      response(matchedProducts);
+    },
+    minLength: 0,
+    select: function (event, ui) {
+      // Update the price field when a product is selected
+      const selectedProduct = ui.item.value;
+      const priceField = $("#price");
+      const selectedPrice = productPrices[selectedProduct];
+
+      if (selectedPrice !== undefined) {
+        priceField.val(selectedPrice.toFixed(2)); // Format the price to two decimal places
+      } else {
+        // Handle the case where the selected product doesn't have a predefined price
+        priceField.val('');
+      }
+    }
+  }).focus(function () {
+    $(this).autocomplete("search", "");
+  });
+}
+
+function addEnterKeyListeners(elements) {
+    elements.forEach((element, index, array) => {
+        element.addEventListener('keyup', event => {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent form submission on Enter key
+                const nextIndex = index + 1;
+                if (nextIndex < array.length) {
+                    array[nextIndex].focus();
+                }
+            }
+        });
+    });
+}
+
+let invoiceGenerated = true;
+let totalCalculated = false;
+
+function captureData() {
+    if (totalCalculated) {
+        alert('Total has been calculated. Cannot capture more data.');
+        return;
+    }
+
+    const customerName = document.getElementById('customer-name').value.trim();
+    const locality = document.getElementById('locality').value.trim();
+    const productName = document.getElementById('product').value.trim();
+    const quantityInput = document.getElementById('quantity');
+    const priceInput = document.getElementById('price');
+
+    if (!customerName || !locality || !productName || !quantityInput.value || !priceInput.value) {
+        alert("Please fill in all required fields");
+        return;
+    }
+    const product = productName;
+    const quantity = parseFloat(quantityInput.value);
+    const price = parseFloat(priceInput.value);
+
+    const total = quantity * price;
+    const formattedTotal = formatToRupees(total);
+    // document.getElementById('formattedTotal').value = total;
+
+    const capturedData = {
+        'Product': product,
+        'Quantity': quantity,
+        'Price': price,
+        'Subtotal': formattedTotal
+    };
+
+    appendToDetailsTable(capturedData);
+    document.getElementById('details-table').style.display = 'table';
+
+    // Clear fields after capturing data
+    document.getElementById('product').value = '';
+    document.getElementById('quantity').value = '';
+    document.getElementById('price').value = '';
+}
+
+
+// Add this function to calculate and update the formatted total dynamically
+function updateFormattedTotal() {
+    const quantityInput = document.getElementById('quantity');
+    const priceInput = document.getElementById('price');
+    const formattedTotalInput = document.getElementById('formattedTotal');
+
+    const quantity = parseFloat(quantityInput.value);
+    const price = parseFloat(priceInput.value);
+
+    if (!isNaN(quantity) && !isNaN(price) && quantity > 0 && price > 0) {
+        const total = quantity * price;
+        const formattedTotal = formatToRupees(total);
+        formattedTotalInput.value = total;
+    }
+}
+
+function calculateTotal() {
+    if (totalCalculated) {
+        alert("Total calculated. Please print.");
+        return;
+    }
+
+    const detailsTable = document.getElementById('details-table');
+
+    if (!detailsTable || detailsTable.offsetHeight === 0) {
+        alert('Error: Details table is not available or visible.');
+        return;
+    }
+
+    const subtotalElements = document.querySelectorAll('#details-table-body td:nth-child(4)');
+    let totalSum = 0;
+
+    subtotalElements.forEach(subtotalElement => {
+        const subtotalValue = parseFloat(subtotalElement.textContent.replace('₹', '').replace(',', '')) || 0;
+        totalSum += subtotalValue;
+        console.log(`totalSum: ${totalSum}`);
+    });
+
+    let discountValue = null;
+
+    do {
+        const discount = prompt('Please Add Discount');
+
+        if (discount === null) {
+            break; // User clicked cancel, exit the loop
+        }
+
+        discountValue = parseFloat(discount);
+
+        if (!isNaN(discountValue) && discountValue >= 0 && discountValue <= 100) {
+            const discountAmount = totalSum * (discountValue / 100);
+            totalSum -= discountAmount;
+
+            const discountRow = document.createElement('tr');
+            discountRow.innerHTML = `<td colspan="3">Discount (${discountValue}%):</td><td>${formatToRupees(-discountAmount)}</td>`;
+            document.getElementById('details-table-body').appendChild(discountRow);
+
+            // Update discountValuefield here
+            document.getElementById('discountValuefield').value = discountValue / 100;
+            document.getElementById('totalamount').value = totalSum;
+
+        } else if (discountValue < 0) {
+            alert('Discount cannot be negative. Please enter a valid discount.');
+        } else if (discountValue > 100) {
+            alert('Discount cannot be greater than 100%. Please enter a valid discount.');
+        } else {
+            alert('Please enter a valid number for the discount.');
+        }
+    } while (discountValue === null || discountValue < 0 || discountValue > 100);
+
+    const formattedTotal = formatToRupees(totalSum);
+    const totalRow = document.createElement('tr');
+    totalRow.innerHTML = `<td colspan="3">Total:</td><td>${formattedTotal}</td>`;
+
+    document.getElementById('details-table-body').appendChild(totalRow);
+
+    totalCalculated = true;
+}
+
+
+
+document.getElementById('total-btn').addEventListener('click', () => calculateTotal());
+
+function printInvoice() {
+    // Check if the total has been calculated
+    if (!totalCalculated) {
+        alert("Total not calculated. Please calculate total before printing.");
+        return;
+    }
+    // Get the current invoice number and date
+    var currentInvoiceNumber = document.getElementById('invoice-number').value;
+    var currentatenum = document.getElementById('current-date').value;
+    var discountValuefield1 = document.getElementById('discountValuefield').value;
+
+    // Define the HTML content as a string
+    var printContent = `
+        <html>
+        <head>
+            <title>Print</title>
+            <style>
+                body { margin: 0; padding: 20px; font-family: Segoe UI, sans-serif; }
+                table { width: 100%; border-collapse: collapse; }
+                th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+                th { background-color: #1475bc; color: #fff; }
+            </style>
+        </head>
+        <body>
+            <img id="printImage" src="./img/SMT1.png" alt="SMT" width="30%" style="position: relative;">
+            <div style="text-align: right; padding-bottom: 10px;">Invoice Number: ${currentInvoiceNumber}</div>
+            <div style="text-align: right; padding-bottom: 10px;">Date: ${currentatenum}</div>
+            ${document.getElementById('details-table').outerHTML}
+        </body>
+        </html>
+        `;
+
+    // Create a new window for printing
+    var printWindow = window.open('', '_blank');
+
+    // Write the HTML content to the window
+    printWindow.document.write(printContent);
+
+    // Wait for the image to load before printing
+    var printImage = printWindow.document.getElementById('printImage');
+    printImage.onload = function() {
+        // Print the content
+        printWindow.print();
+
+        // Close the new window
+        printWindow.document.close();
+        printWindow.close();
+    };
+    // Remove the existing rows from the details table
+   var detailsTableBody = document.getElementById('details-table-body');
+   while (detailsTableBody.firstChild) {
+       detailsTableBody.removeChild(detailsTableBody.firstChild);
+   }
+
+    // Reset flags and regenerate invoice number
+    invoiceGenerated = true;
+    generateRandomInvoiceNumber();
+    updateCurrentDate();
+    totalCalculated = false;
+
+    // Clear input fields
+    ['product', 'quantity', 'price', 'customer-name', 'locality'].forEach(id => { document.getElementById(id).value = ''; });
+
+    // Re-add event listeners to move to the next input field
+    const formElements = document.querySelectorAll('.input-field, .product-field, .select-field');
+    addEnterKeyListeners(formElements);
+
+    // Hide details table
+    document.getElementById('details-table').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    updateCurrentDate();
+    generateRandomInvoiceNumber();
+    // Add event listeners for buttons
+    $(function () {
+      initializeProductAutocomplete("#product");
+    });
+
+    const formElements = document.querySelectorAll('.input-field, .product-field, .select-field');
+    addEnterKeyListeners(formElements);
+
+
+    // Get the quantityInput field
+   const quantityInput = document.getElementById('quantity');
+   quantityInput.addEventListener('input', () => {updateFormattedTotal();});
+
+    document.getElementById('capture-data-btn').addEventListener('click', captureData);
+    document.getElementById('print-btn').addEventListener('click', printInvoice);
+    document.getElementById('cancel-btn').addEventListener('click', removeLastRow);
+    // document.getElementById('total-btn').addEventListener('click', calculateTotal);
+
+});
+
+function sendPrintDataToPHP() {
+  var currentInvoiceNumber = document.getElementById('invoice-number').value;
+  var currentatenum = document.getElementById('current-date').value;
+  var discountValuefield1 = document.getElementById('discountValuefield').value;
+  var totalamount = document.getElementById('totalamount').value;
+
+  $.ajax({
+    type: 'POST',
+    url: 'process_print_data.php',
+    data: {
+      currentInvoiceNumber: currentInvoiceNumber,
+      currentatenum: currentatenum,
+      discountValuefield1: discountValuefield1,
+      totalamount: totalamount
+    },
+    success: function (response) {
+      console.log('Print data sent to PHP successfully!');
+    },
+    error: function (error) {
+      console.error('Error sending print data to PHP:', error);
+    }
+  });
+}
+
+
+// Ensure your custom-submit-btn has an ID
+$('#capture-data-btn').on('click', function (event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Check if any of the required fields are empty
+  var requiredFields = ['#customer-name', '#locality', '#product','#quantity'];
+  if (requiredFields.some(field => $(field).val() === '')) {
+    console.log('Please fill in all required fields.');
+    return;
+  }
+
+  // Serialize form data
+  var formData = $('#invoice-form').serialize();
+
+  // AJAX POST request to process_form.php
+  $.ajax({
+    type: 'POST',
+    url: 'process_form.php', // Update with the correct path to your PHP file
+    data: formData,
+    success: function (response) { console.log('Form submitted successfully!');},
+    error: function (error) { console.error('Error submitting form:', error); }
+  });
+});
+
+
+
+document.getElementById('print-btn').addEventListener('click', function (event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  // Check if the total has been calculated
+  if (!totalCalculated) {
+    alert("Total not calculated. Please calculate total before printing.");
+    return;
+  }
+
+  // Call the sendPrintDataToPHP function
+  sendPrintDataToPHP();
+});
+
+
+// Add event listeners for buttons
+['total-btn', 'cancel-btn'].forEach(function (btnId) {
+  document.getElementById(btnId).addEventListener('click', function (event) {
+    event.preventDefault();
+  });
+});
+
+
+</script>
+
+<!-- ... -->
+
+</body>
+</html>
