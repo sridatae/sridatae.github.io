@@ -152,6 +152,11 @@
             padding-left: 10px;
             position: relative;
         }
+        @media only screen and (max-width: 1536px) {
+            body {
+                margin-top: 3%;
+            }
+        }
 
         @media only screen and (max-width: 600px) {
             body #invoice-form {
@@ -178,6 +183,8 @@
                 position: relative;
             }
         }
+
+
     </style>
 
 </head>
@@ -278,6 +285,15 @@
 
 
 <script>
+
+// Get the screen size
+const screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+const screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+// Print the screen size to the console
+console.log('Screen Width:', screenWidth, 'Screen Height:', screenHeight);
+
+
 function updateCurrentDate() {
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleString();
